@@ -17,3 +17,5 @@ services:
         sync: false
       - key: DATABASE_URL
         sync: false
+      - key: DATABASE_SCHEMA
+        value: sc6113_escrow_group

@@ -13,6 +13,7 @@ from eth_account.messages import encode_defunct
 from flask import Flask, jsonify, render_template, request, session
 from sqlalchemy import create_engine, MetaData, Table, Column, String, Text, Integer, select, delete, insert, text
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.schema import CreateSchema
 from web3 import Web3
 
 ROOT = Path(__file__).resolve().parent
@@ -28,6 +29,7 @@ def create_app(overrides=None):
                       APP_ORIGIN=origin, SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE='Lax',
                       SESSION_COOKIE_SECURE=origin.startswith('https://'), PERMANENT_SESSION_LIFETIME=timedelta(hours=2),
                       MAX_CONTENT_LENGTH=16384, DATABASE_URL=os.getenv('DATABASE_URL', 'sqlite:///'+str(ROOT/'instance/escrow.db')),
+                      DATABASE_SCHEMA=os.getenv('DATABASE_SCHEMA', ''),
                       DEPLOYMENT_FILE=os.getenv('DEPLOYMENT_FILE', str(ROOT/'deployment.json')))
     if overrides:
         app.config.update(overrides)
@@ -42,7 +44,15 @@ def create_app(overrides=None):
     elif database.startswith('postgresql://'):
         database = database.replace('postgresql://', 'postgresql+psycopg://', 1)
     engine = create_engine(database, pool_pre_ping=True)
-    meta = MetaData()
+    schema = app.config['DATABASE_SCHEMA']
+    if schema:
+        if not re.fullmatch(r'[a-z][a-z0-9_]{0,62}', schema) or schema == 'public' or schema.startswith('pg_'):
+            raise RuntimeError('DATABASE_SCHEMA must be a dedicated lowercase PostgreSQL schema')
+        if engine.dialect.name != 'postgresql':
+            raise RuntimeError('DATABASE_SCHEMA is supported only with PostgreSQL')
+        with engine.begin() as conn:
+            conn.execute(CreateSchema(schema, if_not_exists=True))
+    meta = MetaData(schema=schema or None)
     challenges = Table('challenges', meta, Column('nonce', String(64), primary_key=True), Column('address', String(42), nullable=False),
                        Column('message', Text, nullable=False), Column('expires', Integer, nullable=False), Column('attempts', Integer, nullable=False))
     contents = Table('contents', meta, Column('digest', String(66), primary_key=True), Column('author', String(42), nullable=False),

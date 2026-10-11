@@ -69,4 +69,10 @@ class ApiTests(unittest.TestCase):
     def test_challenge_limit(self):
         for _ in range(5):self.assertEqual(self.post('/api/auth/challenge',{'address':self.wallet.address}).status_code,200)
         self.assertEqual(self.post('/api/auth/challenge',{'address':self.wallet.address}).status_code,429)
+    def test_shared_database_schema_rejects_unsafe_targets(self):
+        for schema in ('public', 'pg_catalog', 'x;drop schema public', 'UPPERCASE'):
+            with self.assertRaisesRegex(RuntimeError, 'dedicated lowercase'):
+                create_app({'DATABASE_URL':'sqlite:///:memory:', 'DATABASE_SCHEMA':schema})
+        with self.assertRaisesRegex(RuntimeError, 'only with PostgreSQL'):
+            create_app({'DATABASE_URL':'sqlite:///:memory:', 'DATABASE_SCHEMA':'sc6113_escrow_group'})
 if __name__=='__main__':unittest.main()
