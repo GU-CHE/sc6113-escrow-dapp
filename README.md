@@ -2,7 +2,9 @@
 
 SC6113 group project prototype: a single-delivery freelance escrow DApp using three interacting Solidity contracts, MetaMask, Flask, a persistent database, and a responsive HTML/CSS/JavaScript interface.
 
-**Status:** contracts and backend have local automated tests. Public Sepolia deployment, Render deployment, real MetaMask acceptance, and real mobile acceptance are pending. The default deployment configuration intentionally contains no contract addresses. No mock transactions are presented as real activity. Use test ETH only.
+**Online preview:** https://sc6113-escrow-dapp.onrender.com
+
+**Status (2026-10-12):** the Flask interface is deployed on Render with PostgreSQL. GitHub Actions passes 11 contract tests and 7 API tests. Cloud login, metadata storage and persistence after a service restart passed. Public Sepolia contract deployment, real MetaMask transaction acceptance, and real mobile acceptance are pending. The default deployment configuration intentionally contains no contract addresses. No mock transactions are presented as real activity. Use test ETH only. See [Chinese handover](docs/HANDOVER_ZH.md).
 
 ## Quick start
 

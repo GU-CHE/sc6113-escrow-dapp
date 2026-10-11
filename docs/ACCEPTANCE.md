@@ -1,6 +1,6 @@
 # Acceptance checklist
 
-Status date: 2026-10-12. Local automated test results are evidence only for the tested environment. Public deployment and physical-device checks are pending.
+Status date: 2026-10-12. Render interface and cloud database are deployed and checked. Public contract deployment, real-wallet transactions and physical-device checks are pending. Local automated results apply to their tested environment.
 
 ## Team roles
 
@@ -27,7 +27,7 @@ Status date: 2026-10-12. Local automated test results are evidence only for the 
 | A01 | Valid signature, replay, wrong signer, expired nonce | Only fresh valid signature signs in | Automated Flask tests |
 | A02 | Missing Origin, session or CSRF | Write rejected | Automated Flask tests |
 | A03 | Immutable metadata round trip and hash | Repeated content keeps same hash; stored bytes match hash | Automated Flask tests |
-| A04 | Database persists across service restart | Metadata remains available | Persistent Render DB: pending |
+| A04 | Database persists across service restart | Metadata remains available | Passed on Render / PostgreSQL, 2026-10-12 |
 | W01 | MetaMask rejection and wrong network | Clear error, no false successful state | Real MetaMask: pending |
 | W02 | Account/network switch and session expiry | Actions require correct reconnection | Real MetaMask: pending |
 | W03 | Gas estimate and receipt | Review before signing; confirmed state only after receipt | Real MetaMask: pending |

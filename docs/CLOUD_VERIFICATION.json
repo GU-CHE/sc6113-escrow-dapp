@@ -1,0 +1,12 @@
+{
+  "timeUTC": "2026-10-11T16:58:43.028529+00:00",
+  "origin": "https://sc6113-escrow-dapp.onrender.com",
+  "health": {
+    "contractsConfigured": false,
+    "status": "ok"
+  },
+  "assets": "passed",
+  "chainId": 11155111,
+  "digest": "0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+  "metadataHashVerified": true
+}

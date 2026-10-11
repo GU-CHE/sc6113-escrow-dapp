@@ -1,7 +1,7 @@
 # Verification limits and operational assumptions
 
 - Course prototype using test ETH, without independent security audit or production certification.
-- Real Sepolia contract deployment and Render deployment require the user's accounts and wallet confirmations; not yet completed by local tests.
+- The Render interface and persistent database are deployed. Real Sepolia contract deployment and wallet transactions still require the user's MetaMask confirmations; local tests do not establish public-chain acceptance.
 - Real MetaMask, signature cancellation, account switching and physical mobile tests still require group acceptance.
 - Local wallets, Ganache addresses and local test transactions are not public deployment evidence.
 - One fixed administrator arbitrates subjectively. No admin rotation, appeal, partial settlement or multiple milestones.
