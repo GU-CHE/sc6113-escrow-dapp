@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: sc6113-escrow-dapp
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --workers 1 --threads 4 --timeout 120 app:app
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: SECRET_KEY
+        generateValue: true
+      - key: APP_ORIGIN
+        sync: false
+      - key: RPC_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false

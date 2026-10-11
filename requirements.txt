@@ -1,0 +1,6 @@
+Flask==3.1.2
+SQLAlchemy==2.0.44
+eth-account==0.13.7
+web3==7.14.0
+gunicorn==23.0.0
+psycopg[binary]==3.2.12

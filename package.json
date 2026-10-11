@@ -1,0 +1,16 @@
+{
+  "name": "sc6113-escrow-dapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "compile": "node scripts/compile.cjs",
+    "test": "node --test tests/contracts.test.cjs",
+    "chain": "node scripts/local-chain.cjs",
+    "test:integration": "node tests/integration.cjs"
+  },
+  "devDependencies": {
+    "ethers": "6.15.0",
+    "ganache": "7.9.2",
+    "solc": "0.8.30"
+  }
+}

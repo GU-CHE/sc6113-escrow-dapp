@@ -1,0 +1,105 @@
+{
+  "environment": "Ganache, solc 0.8.30, optimizer 200, Shanghai; test measurements, not Sepolia fees",
+  "samples": [
+    {
+      "operation": "registerCustomer",
+      "gasUsed": "45469"
+    },
+    {
+      "operation": "registerProvider",
+      "gasUsed": "45506"
+    },
+    {
+      "operation": "createOrder",
+      "gasUsed": "171989"
+    },
+    {
+      "operation": "acceptOrder",
+      "gasUsed": "42802"
+    },
+    {
+      "operation": "fundOrder",
+      "gasUsed": "65072"
+    },
+    {
+      "operation": "submitDelivery",
+      "gasUsed": "63213"
+    },
+    {
+      "operation": "approveDelivery",
+      "gasUsed": "88103"
+    },
+    {
+      "operation": "withdraw",
+      "gasUsed": "49872"
+    },
+    {
+      "operation": "createOrder",
+      "gasUsed": "154889"
+    },
+    {
+      "operation": "createOrder",
+      "gasUsed": "154889"
+    },
+    {
+      "operation": "cancelOrder",
+      "gasUsed": "42705"
+    },
+    {
+      "operation": "createOrder",
+      "gasUsed": "154889"
+    },
+    {
+      "operation": "acceptOrder",
+      "gasUsed": "42802"
+    },
+    {
+      "operation": "fundOrder",
+      "gasUsed": "65072"
+    },
+    {
+      "operation": "openDispute",
+      "gasUsed": "97407"
+    },
+    {
+      "operation": "addEvidence",
+      "gasUsed": "49969"
+    },
+    {
+      "operation": "resolveRefund",
+      "gasUsed": "124558"
+    },
+    {
+      "operation": "createOrder",
+      "gasUsed": "154889"
+    },
+    {
+      "operation": "acceptOrder",
+      "gasUsed": "42802"
+    },
+    {
+      "operation": "fundOrder",
+      "gasUsed": "65072"
+    },
+    {
+      "operation": "resolveProvider",
+      "gasUsed": "124568"
+    },
+    {
+      "operation": "createOrder",
+      "gasUsed": "154889"
+    },
+    {
+      "operation": "acceptOrder",
+      "gasUsed": "42802"
+    },
+    {
+      "operation": "fundOrder",
+      "gasUsed": "65072"
+    },
+    {
+      "operation": "refundExpired",
+      "gasUsed": "88237"
+    }
+  ]
+}
