@@ -13,4 +13,6 @@ Date: 2026-10-12. Host: macOS arm64; Solidity 0.8.30, optimizer 200, EVM Shangha
 
 Ganache's unavailable native uWS/bigint bindings fall back to JavaScript on this local Node build. Local Python emits a LibreSSL/urllib3 warning; Render runs Python 3.11.11. These did not fail the tests.
 
-Pending: public Sepolia contract deployment, real MetaMask transaction confirmation/cancellation/account switching, physical phone acceptance, original problem evidence, final report/slides/video and group contribution records.
+- Sepolia deployment: four user-confirmed transactions succeeded at blocks 11897155, 11897157, 11897160 and 11897162. All three contract creation bytecodes match repository artifacts. Registry/resolver/orders bindings and administrator role verified by read-only RPC. Evidence: `SEPOLIA_VERIFICATION.json`. No business orders existed at the checked block; this is deployment verification, not full business acceptance.
+
+Pending: real MetaMask business transaction confirmation/cancellation/account switching, physical phone acceptance, original problem evidence, final report/slides/video and group contribution records.

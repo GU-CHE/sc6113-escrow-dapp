@@ -1,6 +1,6 @@
 # Acceptance checklist
 
-Status date: 2026-10-12. Render interface and cloud database are deployed and checked. Public contract deployment, real-wallet transactions and physical-device checks are pending. Local automated results apply to their tested environment.
+Status date: 2026-10-12. Render interface and cloud database are deployed and checked. Three Sepolia contracts and resolver binding were deployed by the user; all four receipts, bytecodes and bindings were verified (`SEPOLIA_VERIFICATION.json`). Real-wallet business transactions and physical-device checks are pending. Local automated results apply to their tested environment.
 
 ## Team roles
 

@@ -1,1 +1,10 @@
-{"chainId":11155111,"network":"Sepolia","startBlock":0,"addresses":{"RoleRegistry":"","EscrowOrders":"","DisputeResolver":""}}
+{
+  "chainId": 11155111,
+  "network": "Sepolia",
+  "startBlock": 11897155,
+  "addresses": {
+    "RoleRegistry": "0x301B9E840e8FCf727c4b31c9AF75477D64FD4810",
+    "EscrowOrders": "0xf56A0BDED64dA25261FE4DAd31a72D521ED0680B",
+    "DisputeResolver": "0xA0B660Bb047a7Bebc461630D4c7B3F3072EC25a8"
+  }
+}

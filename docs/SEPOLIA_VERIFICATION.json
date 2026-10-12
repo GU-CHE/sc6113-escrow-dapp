@@ -1,0 +1,50 @@
+{
+  "timeUTC": "2026-10-12T06:47:30.233890+00:00",
+  "chainId": 11155111,
+  "startBlock": 11897155,
+  "checkedBlock": 11897190,
+  "administrator": "0xc738E8Ec4d828679e953A47D996f177bDe5C9D36",
+  "addresses": {
+    "RoleRegistry": "0x301B9E840e8FCf727c4b31c9AF75477D64FD4810",
+    "EscrowOrders": "0xf56A0BDED64dA25261FE4DAd31a72D521ED0680B",
+    "DisputeResolver": "0xA0B660Bb047a7Bebc461630D4c7B3F3072EC25a8"
+  },
+  "runtimeCodeBytes": {
+    "RoleRegistry": 724,
+    "EscrowOrders": 6949,
+    "DisputeResolver": 2408
+  },
+  "bindingsVerified": true,
+  "creationBytecodesMatchRepository": true,
+  "transactions": [
+    {
+      "action": "RoleRegistry",
+      "transactionHash": "0x2b9687b8e9668a4e02381bdf2ea7858f76f0217eb7e89b08524e8dedf6c5019a",
+      "blockNumber": 11897155,
+      "gasUsed": 1444185,
+      "status": 1
+    },
+    {
+      "action": "EscrowOrders",
+      "transactionHash": "0xe9397bb47aad1b61b65fa9945e0dff4c39122b82bff6468c762d676841bfa547",
+      "blockNumber": 11897157,
+      "gasUsed": 10955421,
+      "status": 1
+    },
+    {
+      "action": "DisputeResolver",
+      "transactionHash": "0x6793cc1b521c59778550449c9d2e6773da0bf08c907fc8d461881a8923c5f5d7",
+      "blockNumber": 11897160,
+      "gasUsed": 3940458,
+      "status": 1
+    },
+    {
+      "action": "setResolver",
+      "transactionHash": "0xc9eec86d8e329e7dadbab1349ccbe81689210195eab9e909d260abb7d51f59c4",
+      "blockNumber": 11897162,
+      "gasUsed": 314767,
+      "status": 1
+    }
+  ],
+  "orderCount": 0
+}
