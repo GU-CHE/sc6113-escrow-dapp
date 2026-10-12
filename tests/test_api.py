@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,7 +11,12 @@ ORIGIN='http://127.0.0.1:5050'
 class ApiTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory()
-        self.app=create_app({'TESTING':True,'SECRET_KEY':'test-only','DATABASE_URL':'sqlite:///'+str(Path(self.tmp.name)/'test.db')})
+        # API unit tests cover the unconfigured state independently of the live deployment.
+        deployment=Path(self.tmp.name)/'deployment.json'
+        deployment.write_text(json.dumps({'chainId':11155111,'network':'Sepolia','startBlock':0,
+            'addresses':{'RoleRegistry':'','EscrowOrders':'','DisputeResolver':''}}))
+        self.app=create_app({'TESTING':True,'SECRET_KEY':'test-only','DATABASE_URL':'sqlite:///'+str(Path(self.tmp.name)/'test.db'),
+                              'DEPLOYMENT_FILE':str(deployment)})
         self.client=self.app.test_client()
         self.wallet=Account.create()
     def tearDown(self):

@@ -1,12 +1,63 @@
 {
-  "timeUTC": "2026-10-11T16:58:43.028529+00:00",
+  "timeUTC": "2026-10-12T06:50:02.616698+00:00",
   "origin": "https://sc6113-escrow-dapp.onrender.com",
   "health": {
-    "contractsConfigured": false,
+    "contractsConfigured": true,
     "status": "ok"
   },
   "assets": "passed",
   "chainId": 11155111,
   "digest": "0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
-  "metadataHashVerified": true
+  "metadataHashVerified": true,
+  "deployedCommit": "85a86bae4af8bcc07601c8d0be582e87b3879862",
+  "renderDeployment": "dep-db685lnlot8c7397utkg",
+  "previousRestartPersistenceCheck": {
+    "timeUTC": "2026-10-11T16:58:43.028529+00:00",
+    "origin": "https://sc6113-escrow-dapp.onrender.com",
+    "health": {
+      "contractsConfigured": false,
+      "status": "ok"
+    },
+    "assets": "passed",
+    "chainId": 11155111,
+    "digest": "0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+    "metadataHashVerified": true
+  },
+  "chainReads": {
+    "/api/orders": {
+      "claimableWei": "0",
+      "lockedWei": "0",
+      "nextBefore": null,
+      "orders": [],
+      "total": 0
+    },
+    "/api/events": {
+      "events": [
+        {
+          "args": {
+            "resolver": "0xA0B660Bb047a7Bebc461630D4c7B3F3072EC25a8"
+          },
+          "block": 11897162,
+          "contract": "EscrowOrders",
+          "event": "ResolverConfigured",
+          "logIndex": 25,
+          "txHash": "0xc9eec86d8e329e7dadbab1349ccbe81689210195eab9e909d260abb7d51f59c4"
+        },
+        {
+          "args": {
+            "account": "0xc738E8Ec4d828679e953A47D996f177bDe5C9D36",
+            "role": 3
+          },
+          "block": 11897155,
+          "contract": "RoleRegistry",
+          "event": "RoleRegistered",
+          "logIndex": 14,
+          "txHash": "0x2b9687b8e9668a4e02381bdf2ea7858f76f0217eb7e89b08524e8dedf6c5019a"
+        }
+      ],
+      "fromBlock": 11897155,
+      "limit": 100,
+      "toBlock": 11897204
+    }
+  }
 }
