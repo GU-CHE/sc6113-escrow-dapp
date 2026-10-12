@@ -1,0 +1,130 @@
+{
+  "scope": "All Part 5 payload files except this self-referential manifest. Paths are relative to docs/part5.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 168,
+      "sha256": "3afa149b1c5c764d3e55ff99b24b9fc813a196573b068ce391029578fc94864e"
+    },
+    {
+      "path": "acceptance/BACKEND_ACCEPTANCE_EN.md",
+      "bytes": 10148,
+      "sha256": "684e4f42465f57482a5f289bcfa18bde0248b3312210cb0288351d4f02a90749"
+    },
+    {
+      "path": "acceptance/build_report.py",
+      "bytes": 4129,
+      "sha256": "ed2ac65861b87a53bcf0bdd0c0d872e82e93398d9236ab92d2a349edd26c4bcd"
+    },
+    {
+      "path": "acceptance/part5_live.cjs",
+      "bytes": 14111,
+      "sha256": "2f0e71570e40929213fa1d0dba8d7751e394e730d44b1e4f6347524e418f97ff"
+    },
+    {
+      "path": "acceptance/part5_stability.cjs",
+      "bytes": 1791,
+      "sha256": "4957a517852ec139f0f87eb411c00ca6929fe8d2839a0ab1fe55c26b7530df3d"
+    },
+    {
+      "path": "acceptance/publication_read.cjs",
+      "bytes": 4904,
+      "sha256": "f09149b5f8ee23bfdc0327a4bbb4950b9d6c2fb9bba99ad3fb012e01edac3db6"
+    },
+    {
+      "path": "acceptance/REPORT_SECTION_EN.md",
+      "bytes": 6445,
+      "sha256": "2bcdaa388dfc35efad5f69be3100175aeb21d678a03cecf7c34ac555d09e932f"
+    },
+    {
+      "path": "CONTRIBUTION_EN.md",
+      "bytes": 1996,
+      "sha256": "689b502f69d14495b6214e8d5be4137f0dc41eaf826a9450cb9a2d3cf183589e"
+    },
+    {
+      "path": "evidence/ci-verification.json",
+      "bytes": 240,
+      "sha256": "625e5d51dccae57b4c00e7763d837ec82ed5ef93d79f20a962ca4166bdb43c4e"
+    },
+    {
+      "path": "evidence/COVERAGE_EN.md",
+      "bytes": 5035,
+      "sha256": "d303cc2f5efebd81566a588cdbb7c2181d12f2fc237078cf757f8262cd7072c0"
+    },
+    {
+      "path": "evidence/DEFECT_HANDOFF_EN.md",
+      "bytes": 1893,
+      "sha256": "90e1a93360c59f3189d80fc7b92ad462043f6f8e2d4006fa9352795153b6ce27"
+    },
+    {
+      "path": "evidence/defects.json",
+      "bytes": 839,
+      "sha256": "c3e5adda50d4c0a9cc3ddfbe8ff72c8a0a838f5663ff7832d5b723742c50bf79"
+    },
+    {
+      "path": "evidence/DEPLOYMENT_EN.md",
+      "bytes": 5464,
+      "sha256": "f706b8833759392de51cc669e7d19781ce4ec9a338b53f2a7e88c8128f315a6f"
+    },
+    {
+      "path": "evidence/live-results.json",
+      "bytes": 11719,
+      "sha256": "69716d1ff4ae07f74d37fb1d434bcd8444dd2ac7bdb6247786817abfe1e8117e"
+    },
+    {
+      "path": "evidence/local-python-attempt_EN.txt",
+      "bytes": 1359,
+      "sha256": "299d98297cee130ddec590d8e1db8bc45bccb7075c253a4e6f0abf9d77f4432b"
+    },
+    {
+      "path": "evidence/original-evidence-manifest.json",
+      "bytes": 1288,
+      "sha256": "95f8921c02f088cc55b2ca9636b88e75988ed596ab0f92f90bbefdb70bb563b3"
+    },
+    {
+      "path": "evidence/package-validation.json",
+      "bytes": 1150,
+      "sha256": "2537546381db95b4f11b6f6fa6d60074e78f5958ac53468ab441efb1186e7cb2"
+    },
+    {
+      "path": "evidence/provenance.json",
+      "bytes": 634,
+      "sha256": "f9ee5d42dc11a6ee4b579e3d2c34efa624ed7c9ae39bfe3a7195c0a5036cfcfb"
+    },
+    {
+      "path": "evidence/publication-read-2026-10-12T12-07-01-782Z.json",
+      "bytes": 1930,
+      "sha256": "b5c0afa027d9c06400771f463cbc3a99c5bb32cba847e6d2e0bea72c9140e2b6"
+    },
+    {
+      "path": "evidence/publication-read-2026-10-12T12-07-16-208Z.json",
+      "bytes": 2971,
+      "sha256": "18814b01a0061a822a9824806bc4cdd14037fc98c1507f49dd4d8751b0f89370"
+    },
+    {
+      "path": "evidence/repository-baseline.json",
+      "bytes": 3666,
+      "sha256": "ee8ee53e71f470df5f1480d45611c7476cdb43794409c480f162b25d87299683"
+    },
+    {
+      "path": "evidence/requirements-attempted-python.txt",
+      "bytes": 999,
+      "sha256": "406b4186eb7354b76cd77d9072287393478b56a5712fcb2f3a6c68c3b7be7e10"
+    },
+    {
+      "path": "evidence/stability-samples.json",
+      "bytes": 538,
+      "sha256": "58ef7688b23b4622a5b86ab75597fdf927baf8e933d4806c3bdb119a8ce8dd5c"
+    },
+    {
+      "path": "output/pdf/Part5_Backend_Deployment_Acceptance_EN.pdf",
+      "bytes": 13285,
+      "sha256": "ad365dd1ce6e9b0156ada988ae094e9cef3e45034e3a593f543e4abaebd90e65"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5237,
+      "sha256": "6d5797c3df2ac583643568b719fe02fd633139f0ee67ce62d83989440823db8d"
+    }
+  ]
+}

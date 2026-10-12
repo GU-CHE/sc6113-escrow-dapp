@@ -1,0 +1,112 @@
+{
+  "observedAtUTC": "2026-10-12T12:06:18.623408+00:00",
+  "repository": "https://github.com/GU-CHE/sc6113-escrow-dapp",
+  "checkoutLocation": "group-project-part5/repo (independent Git root, relative to the local course workspace)",
+  "origin": "https://github.com/GU-CHE/sc6113-escrow-dapp.git",
+  "baseRevision": "99b4877f868d6811f6ed125379d8bc29e6690204",
+  "branch": "codex/part5-backend-acceptance",
+  "initialTrackedAndUntrackedState": "clean",
+  "priorReviewUTC": "2026-10-12T11:45:54Z",
+  "verifiedUnchangedReferenceFiles": [
+    {
+      "path": ".env.example",
+      "blobSHA": "8421757a1fffaee34aa437f9390ab36e799dc9e8"
+    },
+    {
+      "path": ".github/workflows/tests.yml",
+      "blobSHA": "04470cc7fb928e94c53ddbe0a3663680a8e7b2d8"
+    },
+    {
+      "path": "README.md",
+      "blobSHA": "338ee907379a356fda5634b53911e1331838700d"
+    },
+    {
+      "path": "app.py",
+      "blobSHA": "78a397c2bbe3048a4b7049196917856546f6bb34"
+    },
+    {
+      "path": "deployment.json",
+      "blobSHA": "f87c3b31eecb9e66f7b81761fd26cd6cccebfedc"
+    },
+    {
+      "path": "docs/ACCEPTANCE.md",
+      "blobSHA": "c4f2a6c5a50723032d81f7d9fdf4f5e78130d206"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "blobSHA": "14f7f51fc8f92730c9c76cc6cb6567b4d36b1120"
+    },
+    {
+      "path": "docs/CLOUD_VERIFICATION.json",
+      "blobSHA": "f10443dbff905091fbb5bd42d833be04bbbcbe7c"
+    },
+    {
+      "path": "docs/CONTRIBUTIONS.md",
+      "blobSHA": "2472d496cac28b762ca651e7fd12f981d8e7b086"
+    },
+    {
+      "path": "docs/DEFECT_LOG.csv",
+      "blobSHA": "68351bc0cf94c0ab0b31ab8afe454fc4de8fbe87"
+    },
+    {
+      "path": "docs/HANDOVER_ZH.md",
+      "blobSHA": "eba9e248ee3a2fd43c68ffbc2b32e90ed8b71fe9"
+    },
+    {
+      "path": "docs/LIMITATIONS.md",
+      "blobSHA": "ed4bf209c2ea6dc9f79b5c290c983ff520da8a94"
+    },
+    {
+      "path": "docs/SEPOLIA_VERIFICATION.json",
+      "blobSHA": "10e8ab3519ae98e0b48b285532117d792e6fb2af"
+    },
+    {
+      "path": "docs/TEST_RESULTS.md",
+      "blobSHA": "50d46862e02f88d1f52c65c06913051bd95baf07"
+    },
+    {
+      "path": "docs/USER_GUIDE.md",
+      "blobSHA": "b97b65c045d8aeb89554b0f894e8c1d983846e97"
+    },
+    {
+      "path": "docs/gas-samples.json",
+      "blobSHA": "7d4daa6cb3a8d15e4bfe469b25d3e7d07ba97382"
+    },
+    {
+      "path": "package.json",
+      "blobSHA": "01a3e50202ec7b5722517580886abb40b383f3b8"
+    },
+    {
+      "path": "render.yaml",
+      "blobSHA": "a74ccf4c12c969e7b7b7d27f0b8f3af4852d2de6"
+    },
+    {
+      "path": "requirements-lock.txt",
+      "blobSHA": "11febe823d7f1bab351604c2226b7d88aa5589e9"
+    },
+    {
+      "path": "requirements.txt",
+      "blobSHA": "2c86257764db48a462dd34277d87bc8808c845f9"
+    },
+    {
+      "path": "scripts/cloud-smoke.py",
+      "blobSHA": "3ea5ed8c9678f8ac4066e6292c61972db1ff3a9e"
+    },
+    {
+      "path": "static/vendor/ethers.LICENSE.md",
+      "blobSHA": "12fe15fbb73c3693168529d3158124c19b3c27da"
+    },
+    {
+      "path": "tests/test_api.py",
+      "blobSHA": "1208634daa6c60f41712aced769d3ce890c23406"
+    }
+  ],
+  "businessAcceptance": {
+    "pr": 1,
+    "state": "open, unmerged at review",
+    "head": "a696eaaec2f5be4de45725c180bf558e04f47deb",
+    "reviewScope": "Current document and index of 25 screenshots; no independent visual revalidation of all screenshots or replay of 31 reported transactions."
+  },
+  "reconciliation": "Main documents still contain older pending business-test statements; PR #1 has newer completed results. Shared documents and PR #1 are unchanged.",
+  "sourceEqualsLiveBackend": "NOT VERIFIED: a matching source or static asset revision does not prove the current server commit."
+}

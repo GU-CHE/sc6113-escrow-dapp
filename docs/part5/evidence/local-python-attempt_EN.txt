@@ -1,0 +1,25 @@
+LOCAL PYTHON TEST ATTEMPT - ENGLISH DIAGNOSTIC SUMMARY
+
+Project: SC6113 group escrow DApp, Part 5 acceptance
+Reference revision: 99b4877f868d6811f6ed125379d8bc29e6690204
+Environment: Windows 11, Python 3.12
+Command: python -m unittest discover -s tests -p "test_*.py" -v
+Outcome: import failure before the repository API tests executed.
+
+The unittest loader could not import test_api. The import chain reached
+eth_account, eth_keyfile, Crypto.Protocol.KDF and Crypto.Util._raw_api.
+PyCryptodome then failed to load the native module Crypto.Cipher._Salsa20.
+The diagnostic included Windows error 4551: application-control policy
+blocked the native module file. The localized diagnostic in the original
+captured trace also contains encoding replacement characters.
+
+The loader reported one error placeholder. This does not mean that one
+repository API test executed, and it is not a pass of the seven-test suite.
+The existing GitHub Actions result and the later Node.js live acceptance
+results are independent evidence.
+
+This file is an English summary, not a verbatim replacement of the raw trace.
+The unmodified original-api-tests.txt is retained in the local evidence
+directory and excluded from the English upload and submission package.
+The attempted dependency versions are listed in
+requirements-attempted-python.txt. No application fix is claimed here.

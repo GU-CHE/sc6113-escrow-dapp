@@ -1,0 +1,4 @@
+# Preserve evidence and manifest byte hashes across platform line-ending settings.
+* -text
+*.pdf binary
+evidence/requirements-attempted-python.txt whitespace=cr-at-eol

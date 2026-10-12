@@ -1,0 +1,419 @@
+{
+  "timeUTC": "2026-10-12T11:19:50.534Z",
+  "origin": "https://sc6113-escrow-dapp.onrender.com",
+  "sourceRevision": "99b4877f868d6811f6ed125379d8bc29e6690204",
+  "node": "v24.19.0",
+  "platform": "win32 10.0.26200",
+  "ethers": "6.15.0",
+  "scope": "Live HTTP. Unfunded disposable signature. No blockchain transaction. One public QA metadata record.",
+  "qaRecordDigest": "0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+  "priorRestartRecordDigest": "0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+  "results": [
+    {
+      "id": "D01",
+      "title": "HTTPS service and database health",
+      "expected": "HTTP 200 and configured contracts",
+      "timeUTC": "2026-10-12T11:19:35.242Z",
+      "observed": {
+        "contractsConfigured": true,
+        "status": "ok",
+        "responseMs": 1007
+      },
+      "status": "PASS",
+      "elapsedMs": 1007
+    },
+    {
+      "id": "D02",
+      "title": "Public deployment configuration and ABI",
+      "expected": "Sepolia addresses and ABI match snapshot",
+      "timeUTC": "2026-10-12T11:19:36.252Z",
+      "observed": {
+        "chainId": 11155111,
+        "addresses": {
+          "DisputeResolver": "0xA0B660Bb047a7Bebc461630D4c7B3F3072EC25a8",
+          "EscrowOrders": "0xf56A0BDED64dA25261FE4DAd31a72D521ED0680B",
+          "RoleRegistry": "0x301B9E840e8FCf727c4b31c9AF75477D64FD4810"
+        },
+        "abisMatchSnapshot": true,
+        "privateConfigurationAbsent": true
+      },
+      "status": "PASS",
+      "elapsedMs": 259
+    },
+    {
+      "id": "D03",
+      "title": "Published assets and response protection",
+      "expected": "Source assets, CSP, nosniff",
+      "timeUTC": "2026-10-12T11:19:36.511Z",
+      "observed": {
+        "assetSHA256": {
+          "static/app.js": "6dd08a61327aa2c1cd742c45c7ec02652f4d5fcfd74d7426f70ff7cc61529cf6",
+          "static/styles.css": "3b4c291fef7de3bcd8269a8a621f7c4b7d622efcb58bcf0d6dc40f22b810f930"
+        },
+        "CSP": "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https: http://127.0.0.1:8545; img-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+        "nosniff": true
+      },
+      "status": "PASS",
+      "elapsedMs": 869
+    },
+    {
+      "id": "D04",
+      "title": "Live chain-derived order read",
+      "expected": "Valid bounded data",
+      "timeUTC": "2026-10-12T11:19:37.380Z",
+      "observed": {
+        "orderCount": 8,
+        "lockedWei": "1000000000000000",
+        "claimableWei": "0",
+        "orderStates": {
+          "1": "Refunded",
+          "2": "Cancelled",
+          "3": "Cancelled",
+          "4": "Released",
+          "5": "Refunded",
+          "6": "Released",
+          "7": "Created",
+          "8": "Funded"
+        },
+        "responseMs": 4100
+      },
+      "status": "PASS",
+      "elapsedMs": 4100
+    },
+    {
+      "id": "D05",
+      "title": "Live decoded event read",
+      "expected": "At most 100 events over 1,000 blocks",
+      "timeUTC": "2026-10-12T11:19:41.480Z",
+      "observed": {
+        "eventsCount": 22,
+        "fromBlock": 11897550,
+        "toBlock": 11898549,
+        "responseMs": 817
+      },
+      "status": "PASS",
+      "elapsedMs": 819
+    },
+    {
+      "id": "D06",
+      "title": "Prior restart QA record remains readable",
+      "expected": "Known record hash remains valid",
+      "timeUTC": "2026-10-12T11:19:42.302Z",
+      "observed": {
+        "digest": "0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+        "hashVerified": true,
+        "responseMs": 303
+      },
+      "status": "PASS",
+      "elapsedMs": 307
+    },
+    {
+      "id": "A01",
+      "title": "Missing Origin",
+      "expected": "JSON 403",
+      "timeUTC": "2026-10-12T11:19:42.609Z",
+      "observed": {
+        "http": 403,
+        "responseMs": 261,
+        "error": "Origin not allowed"
+      },
+      "status": "PASS",
+      "elapsedMs": 262
+    },
+    {
+      "id": "A02",
+      "title": "Foreign Origin",
+      "expected": "JSON 403",
+      "timeUTC": "2026-10-12T11:19:42.871Z",
+      "observed": {
+        "http": 403,
+        "responseMs": 289,
+        "error": "Origin not allowed"
+      },
+      "status": "PASS",
+      "elapsedMs": 290
+    },
+    {
+      "id": "A03",
+      "title": "Malformed wallet address",
+      "expected": "JSON 400",
+      "timeUTC": "2026-10-12T11:19:43.161Z",
+      "observed": {
+        "http": 400,
+        "responseMs": 272,
+        "error": "Invalid wallet address"
+      },
+      "status": "PASS",
+      "elapsedMs": 272
+    },
+    {
+      "id": "A04",
+      "title": "Unauthenticated metadata write",
+      "expected": "JSON 401",
+      "timeUTC": "2026-10-12T11:19:43.433Z",
+      "observed": {
+        "http": 401,
+        "responseMs": 271,
+        "error": "Sign in with your wallet first"
+      },
+      "status": "PASS",
+      "elapsedMs": 271
+    },
+    {
+      "id": "A05",
+      "title": "Non-JSON write",
+      "expected": "JSON 415",
+      "timeUTC": "2026-10-12T11:19:43.704Z",
+      "observed": {
+        "http": 415,
+        "responseMs": 342,
+        "error": "JSON required"
+      },
+      "status": "PASS",
+      "elapsedMs": 342
+    },
+    {
+      "id": "A06",
+      "title": "Login challenge binding",
+      "expected": "Origin, address, Sepolia and expiry",
+      "timeUTC": "2026-10-12T11:19:44.166Z",
+      "observed": {
+        "originAndChainBound": true,
+        "address": "0xb19b89aA513586322753756B6dc693079c8e6C6d"
+      },
+      "status": "PASS",
+      "elapsedMs": 299
+    },
+    {
+      "id": "A07",
+      "title": "Wrong signer rejected",
+      "expected": "JSON 401",
+      "timeUTC": "2026-10-12T11:19:44.473Z",
+      "observed": {
+        "http": 401,
+        "responseMs": 293,
+        "error": "Signature does not match wallet"
+      },
+      "status": "PASS",
+      "elapsedMs": 293
+    },
+    {
+      "id": "A08",
+      "title": "Valid signed login and session protection",
+      "expected": "HTTP 200 and secure cookie flags",
+      "timeUTC": "2026-10-12T11:19:44.766Z",
+      "observed": {
+        "http": 200,
+        "address": "0xb19b89aA513586322753756B6dc693079c8e6C6d",
+        "Secure": true,
+        "HttpOnly": true,
+        "SameSite": "Lax"
+      },
+      "status": "PASS",
+      "elapsedMs": 303
+    },
+    {
+      "id": "A09",
+      "title": "Login signature replay rejected",
+      "expected": "JSON 401",
+      "timeUTC": "2026-10-12T11:19:45.069Z",
+      "observed": {
+        "http": 401,
+        "responseMs": 257,
+        "error": "Login challenge expired or invalid"
+      },
+      "status": "PASS",
+      "elapsedMs": 257
+    },
+    {
+      "id": "A10",
+      "title": "Session identifies verified wallet",
+      "expected": "Same authenticated identity",
+      "timeUTC": "2026-10-12T11:19:45.326Z",
+      "observed": {
+        "address": "0xb19b89aA513586322753756B6dc693079c8e6C6d",
+        "sessionRecognized": true
+      },
+      "status": "PASS",
+      "elapsedMs": 356
+    },
+    {
+      "id": "A11",
+      "title": "Missing CSRF rejected",
+      "expected": "JSON 403",
+      "timeUTC": "2026-10-12T11:19:45.682Z",
+      "observed": {
+        "http": 403,
+        "responseMs": 389,
+        "error": "Invalid CSRF token"
+      },
+      "status": "PASS",
+      "elapsedMs": 390
+    },
+    {
+      "id": "A12",
+      "title": "Wrong CSRF rejected",
+      "expected": "JSON 403",
+      "timeUTC": "2026-10-12T11:19:46.073Z",
+      "observed": {
+        "http": 403,
+        "responseMs": 321,
+        "error": "Invalid CSRF token"
+      },
+      "status": "PASS",
+      "elapsedMs": 321
+    },
+    {
+      "id": "A13",
+      "title": "Authenticated malformed body rejected",
+      "expected": "JSON 400",
+      "timeUTC": "2026-10-12T11:19:46.394Z",
+      "observed": {
+        "http": 400,
+        "responseMs": 306,
+        "error": "Invalid content kind"
+      },
+      "status": "PASS",
+      "elapsedMs": 306
+    },
+    {
+      "id": "A14",
+      "title": "Oversized description rejected",
+      "expected": "JSON 400",
+      "timeUTC": "2026-10-12T11:19:46.700Z",
+      "observed": {
+        "http": 400,
+        "responseMs": 280,
+        "error": "Description must contain 1–4000 characters"
+      },
+      "status": "PASS",
+      "elapsedMs": 280
+    },
+    {
+      "id": "H01",
+      "title": "Canonical Unicode metadata and Keccak integrity",
+      "expected": "Hash and verified author match",
+      "timeUTC": "2026-10-12T11:19:46.980Z",
+      "observed": {
+        "digest": "0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+        "unicodeHashVerified": true,
+        "authorBoundToVerifiedSession": true
+      },
+      "status": "PASS",
+      "elapsedMs": 303
+    },
+    {
+      "id": "H02",
+      "title": "Repeated content is idempotent",
+      "expected": "Same digest",
+      "timeUTC": "2026-10-12T11:19:47.283Z",
+      "observed": {
+        "digest": "0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+        "sameContentSameDigest": true
+      },
+      "status": "PASS",
+      "elapsedMs": 299
+    },
+    {
+      "id": "H03",
+      "title": "Public metadata read and integrity",
+      "expected": "Exact hash and JSON match",
+      "timeUTC": "2026-10-12T11:19:47.582Z",
+      "observed": {
+        "digest": "0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+        "hashVerified": true,
+        "responseMs": 286
+      },
+      "status": "PASS",
+      "elapsedMs": 287
+    },
+    {
+      "id": "H04",
+      "title": "Malformed digest rejected",
+      "expected": "JSON 400",
+      "timeUTC": "2026-10-12T11:19:47.869Z",
+      "observed": {
+        "http": 400,
+        "responseMs": 251,
+        "error": "Invalid hash"
+      },
+      "status": "PASS",
+      "elapsedMs": 251
+    },
+    {
+      "id": "H05",
+      "title": "Unknown digest handled",
+      "expected": "JSON 404",
+      "timeUTC": "2026-10-12T11:19:48.120Z",
+      "observed": {
+        "http": 404,
+        "responseMs": 234,
+        "error": "Metadata not found; on-chain record remains available"
+      },
+      "status": "PASS",
+      "elapsedMs": 234
+    },
+    {
+      "id": "A15",
+      "title": "Logout succeeds",
+      "expected": "HTTP 200",
+      "timeUTC": "2026-10-12T11:19:48.354Z",
+      "observed": {
+        "http": 200,
+        "responseMs": 341
+      },
+      "status": "PASS",
+      "elapsedMs": 341
+    },
+    {
+      "id": "A16",
+      "title": "Logout clears session",
+      "expected": "No identity or CSRF",
+      "timeUTC": "2026-10-12T11:19:48.695Z",
+      "observed": {
+        "signedOut": true
+      },
+      "status": "PASS",
+      "elapsedMs": 239
+    },
+    {
+      "id": "A17",
+      "title": "Old CSRF cannot write after logout",
+      "expected": "JSON 401",
+      "timeUTC": "2026-10-12T11:19:48.934Z",
+      "observed": {
+        "http": 401,
+        "responseMs": 270,
+        "error": "Sign in with your wallet first"
+      },
+      "status": "PASS",
+      "elapsedMs": 271
+    },
+    {
+      "id": "E01",
+      "title": "Invalid pagination is a client error",
+      "expected": "JSON HTTP 400 for before=invalid",
+      "timeUTC": "2026-10-12T11:19:49.206Z",
+      "observed": "Expected HTTP 400, got 503: {\"error\":\"invalid literal for int() with base 10: 'invalid'\"}\n",
+      "status": "FAIL",
+      "elapsedMs": 1084
+    },
+    {
+      "id": "D07",
+      "title": "Service healthy after bounded acceptance",
+      "expected": "HTTP 200",
+      "timeUTC": "2026-10-12T11:19:50.291Z",
+      "observed": {
+        "contractsConfigured": true,
+        "status": "ok",
+        "responseMs": 242
+      },
+      "status": "PASS",
+      "elapsedMs": 242
+    }
+  ],
+  "summary": {
+    "PASS": 29,
+    "FAIL": 1
+  }
+}
