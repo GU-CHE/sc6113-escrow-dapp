@@ -2,7 +2,7 @@
 
 起草：2026-10-12。依据：老师任务书 `SC6113 Group Project.docx`、小组《要求与验收计划》、[ACCEPTANCE.md](ACCEPTANCE.md)、[HANDOVER_ZH.md](HANDOVER_ZH.md) 和当前代码（commit `2f6a01b`）。
 
-> 合约已于 2026-10-12 部署到 Sepolia 并通过核验（地址见 2.2，部署记录见 `SEPOLIA_VERIFICATION.json`）。同日在线上版本用真实 MetaMask 完成了第 3 节全部用例，**B00–B05 全部通过**，31 笔交易和对账结果见第 6 节。本地链测试不算公开测试网证据。
+> 合约已于 2026-10-12 部署到 Sepolia 并通过核验（地址见 2.2，部署记录见 `SEPOLIA_VERIFICATION.json`）。同日在线上版本用真实 MetaMask 完成了第 3 节全部用例，**B00–B05 全部通过**，31 笔交易和对账结果见第 6 节，测试截图在 [`acceptance-screenshots/`](acceptance-screenshots/)（索引见 6.6）。本地链测试不算公开测试网证据。
 
 第 3 节的 B01–B05 与 `ACCEPTANCE.md` 中的同名用例一一对应，这里补充成可以照着操作的步骤和记录表。
 
@@ -20,7 +20,7 @@
 | F4 | 至少十种区块链交易类型 | 12 种，见第 4 节 | ✅ 12 种都有 Sepolia 交易哈希（第 4 节） | — | **2** |
 | F5 | REST API、持久化存储、异常处理 | `app.py`；Render PostgreSQL | ✅ 服务重启后数据保留已验证 | 错误输入的响应记录 | 5 |
 | F6 | 响应式仪表盘、交易历史、事件日志、数据可视化 | `templates/index.html`：指标卡、状态分布条、Transaction history | ⚠️ 可视化只有一个状态分布图 | 真实手机检查；是否补充图表待讨论 | 4 |
-| F7 | Gas 估算 | `transact()` 签名前调用 `estimateGas` 并显示费用上限 | ⏳ 实测 gas 已记录（第 6 节） | 签名前估算弹窗的截图 | **2**、5 |
+| F7 | Gas 估算 | `transact()` 签名前调用 `estimateGas` 并显示费用上限 | ✅ 签名前审核弹窗显示估算 gas 和费用上限（[截图](acceptance-screenshots/F7-createOrder-gas-estimate.webp)）；估算与实测对比见 6.4 | — | **2**、5 |
 | F8 | Gas 优化分析 | 只有本地测量 `docs/gas-samples.json` | ❌ | 优化方案及前后对比 | 3 / 5（未明确） |
 | F9 | 智能合约测试 | `tests/contracts.test.cjs` 11 项，GitHub Actions 通过 | ✅ | — | 3 |
 | F10 | 公共云部署 | https://sc6113-escrow-dapp.onrender.com | ✅ 线上完整业务流程已跑通（第 6 节） | — | 1、5 |
@@ -71,12 +71,12 @@
 ### 2.2 记录内容
 
 - **交易哈希和 gas**：每笔交易确认后，页面顶部状态栏显示 `Confirmed in block … · gas used … · 0x…`，复制哈希和 gas used。签名前的审核弹窗里有 `Estimated gas units`，一起记下，作为“估算 vs 实际”数据。
-- **截图**：订单详情（标题显示 `Order #N · 状态`）和 Etherscan 交易页。文件名用“用例-步骤-动作”，例如 `B01-5-approve.png`。
+- **截图**：订单详情（标题显示 `Order #N · 状态`）；Etherscan 交易页用第 6 节的链接代替。文件名用“用例-步骤-内容”，例如 `B01-5-released-order4.jpg`，放在 `acceptance-screenshots/`。
 - **测试环境**：
 
 | 日期时间（SGT） | 浏览器及版本 | MetaMask 版本 | Render 上线 commit |
 |---|---|---|---|
-| 2026-10-12 15:21–17:18 | Microsoft Edge（版本待补） | 待补 | 待补 |
+| 2026-10-12 15:21–17:18 | Microsoft Edge 154.0.4258.62 | 13.48.0 | `85a86ba` 或 `99b4877`，两者运行代码相同（合约地址由 85a86ba 写入，99b4877 只改了测试和文档） |
 
 合约地址（2026-10-12 部署，起始区块 11897155，已用公开节点核验）：
 
@@ -214,23 +214,23 @@
 - **订单信息全部公开**：订单金额、双方地址和条款原文任何人都能看到，涉及商业保密和隐私，属于采用障碍。
 - **单一管理员**：所有争议由一个固定钱包裁决，没有申诉机制，这是系统的信任假设。
 - **Sepolia 实测 gas 远高于本地测试**：部署 4 笔交易共用 16,654,831 gas，按本地规则估算只有约 245 万；绑定裁决合约一笔用了 314,767 gas，本地约 5 万。业务交易的 gas 要以第 3 节的实测记录为准，报告中的成本数字也要据此更新。
-- **MetaMask 智能账户**：管理员和两个测试账户都是 MetaMask 智能账户（EIP-7702）。除入金外，交易都经 MetaMask 转发（管理员的绑定交易经委托合约 `0xdb9b…47db3`），所以 Etherscan 上的 To 不是我们的合约地址。核对证据时以 Logs 中合约发出的事件和 Internal Txns 为准。
+- **MetaMask 智能账户**：管理员和两个测试账户都是 MetaMask 智能账户（EIP-7702）。账户代码是指向 MetaMask 委托合约的 `0xef0100…` 标记。除入金外，交易都先发给 MetaMask 的 `DelegationManager` 合约（`0xdb9b…47db3`）再转到我们的合约，所以 Etherscan 上的 To 不是我们的合约地址。核对证据时以 Logs 中合约发出的事件和 Internal Txns 为准。
 
 ## 6 执行结果（Sepolia，2026-10-12）
 
-执行人：成员 2。环境：线上版本 https://sc6113-escrow-dapp.onrender.com，Microsoft Edge + MetaMask。客户 C 为 `0xD496…1376`，服务方 P 为 `0x281D…C133`，管理员 A（组长）为 `0xc738…9D36`，负责两次裁决。下列数据于当天 17:20 前后用公开 Sepolia 节点逐笔核对，31 笔交易全部成功。
+执行人：成员 2。环境：线上版本 https://sc6113-escrow-dapp.onrender.com，Microsoft Edge + MetaMask（版本见 2.2）。客户 C 为 `0xD496…1376`，服务方 P 为 `0x281D…C133`，管理员 A（组长）为 `0xc738…9D36`，负责两次裁决。下列数据于当天 17:20 前后用公开 Sepolia 节点逐笔核对，31 笔交易全部成功。
 
 ### 6.1 场景结果
 
 | 用例 | 订单 | 结果 | 关键证据 | 说明 |
 |---|---|---|---|---|
 | B00 角色注册 | — | ✅ | C、P 各一笔 `register` | C 先于 P 注册，不影响后续用例 |
-| B01 正常交付付款 | #4 | ✅ | `approveDelivery` 后只有 P 获得 0.001，P 提现 0.001 | 完整流程共 2,059,551 gas |
-| B02a 创建后取消 | #2 | ✅ | `cancelOrder`；P 看不到 Accept order（截图） | — |
-| B02b 接单后取消 | #3 | ✅ | `cancelOrder`；C 看不到 Fund escrow（截图） | — |
-| B03 争议 → 退款给客户 | #1 | ✅ | C 发起争议，P 补充证据，A 裁决退款；只有 C 获得 0.001 | #1 原为 B05 的第一次尝试（截止时间误用默认的 24 小时），改作 B03，所以条款标题仍是 “B05 overdue test” |
-| B04 争议 → 付款给服务方 | #6 | ✅ | P 交付后发起争议，C 补充证据，A 裁决付款；只有 P 获得 0.001 | 条款标题写作 “B06” |
-| B05 超期未交付退款 | #5 | ✅ | 截止后 C 出现退款按钮、P 没有交付按钮；`refundExpired` 后 C 获得 0.001 | #5 入金时距截止仅 36 秒，“截止前没有退款按钮”这一项用 #1 的截图（Funded、截止前）作证据 |
+| B01 正常交付付款 | #4 | ✅ | `approveDelivery` 后只有 P 获得 0.001（[截图](acceptance-screenshots/B01-5-released-order4.jpg)），P 提现 0.001 | 完整流程共 2,059,551 gas |
+| B02a 创建后取消 | #2 | ✅ | `cancelOrder`；P 看不到 Accept order（[截图](acceptance-screenshots/B02-3-no-accept-order2.jpg)） | — |
+| B02b 接单后取消 | #3 | ✅ | `cancelOrder`；C 看不到 Fund escrow（[截图](acceptance-screenshots/B02-6-cancelled-order3.jpg)） | — |
+| B03 争议 → 退款给客户 | #1 | ✅ | C 发起争议，P 补充证据，A 裁决退款；只有 C 获得 0.001（[详情截图](acceptance-screenshots/B03-6-refunded-order1.png)） | #1 原为 B05 的第一次尝试（截止时间误用默认的 24 小时），改作 B03，所以条款标题仍是 “B05 overdue test” |
+| B04 争议 → 付款给服务方 | #6 | ✅ | P 交付后发起争议，C 补充证据，A 裁决付款；只有 P 获得 0.001（[详情截图](acceptance-screenshots/B04-7-released-order6.png)） | 条款标题写作 “B06” |
+| B05 超期未交付退款 | #5 | ✅ | 截止后 C 出现退款按钮（[截图](acceptance-screenshots/B05-5-refund-button-order5.jpg)）、P 没有交付按钮（[截图](acceptance-screenshots/B05-5-no-submit-order5.jpg)）；`refundExpired` 后 C 获得 0.001 | #5 入金时距截止仅 36 秒，“截止前没有退款按钮”这一项用 #1 的[截图](acceptance-screenshots/B05-4-before-deadline-no-refund-order1.jpg)（Funded、截止前）作证据 |
 
 订单 #7、#8 来自其他账户（`0x2548…95d1`、`0x1819…0db6`），不属于本记录。业务测试中未发现 P0 或 P1 缺陷。
 
@@ -308,9 +308,54 @@
 - B01 完整流程共 2,059,551 gas。按 2026-10-12 主网 gas 价格 0.06 gwei、ETH 2,544 美元计算约 0.31 美元；按 1 gwei 计算约 5.24 美元。
 - 建议负责 gas 分析的成员把“合约本身的开销”和“钱包转发的开销”分开讨论；需要更贴近合约本身的数据时，可以用没有升级为智能账户的普通账户重测。
 
+**签名前估算与实测（F7）**：审核弹窗的 `Estimated gas units` 来自 `estimateGas`，`Estimated fee ceiling` 按估算值加 20% 计算（[截图](acceptance-screenshots/F7-createOrder-gas-estimate.webp)：2026-10-12 对一笔新的 `createOrder` 估算后点了 Cancel，没有发交易）。实际 gas limit 和用量由公开节点读取。
+
+| 交易 | 应用估算 | 应用给的 gas limit（估算 × 1.2） | 实际 gas limit | 实际 gas used | 发送方式 |
+|---|---|---|---|---|---|
+| `fundOrder`（B01） | 63,202（由 gas limit 反推） | 75,842 | 75,842 | 62,372 | 直接调用 EscrowOrders |
+| `createOrder`（估算取自 F7 截图，实际取自 B01） | 602,201 | 722,641 | 883,670 | 775,874 | 经 MetaMask `DelegationManager` 转发 |
+
+- 直接调用时估算准确：只比实际多 1.3%，MetaMask 原样使用了应用给的 gas limit。
+- 经智能账户转发时，估算只覆盖合约本身：实际用量比估算多 173,673（+29%），也超过了应用加 20% 后的上限（+7.4%）。MetaMask 会自己重新估算，把 gas limit 设为 883,670，所以交易没有失败；但弹窗里的 “fee ceiling” 对这类账户偏低，最终费用以 MetaMask 确认页为准（弹窗中也有这句提示）。
+- 多出的 173,673 与上面测得的每笔转发开销 180,566 基本吻合，估算值本身比合约实际用量高约 1%。
+- 改进方向：检测到 EIP-7702 委托账户时，在弹窗中提示“钱包转发约另加 18 万 gas”，或把这一项改称“合约执行估算”。
+
 ### 6.5 执行中发现的问题（可写进报告的局限与改进）
 
 - **截止时间默认是 24 小时后**：B05 第一次尝试忘了修改，订单当天无法超期退款。可以在表单上加提示，或在测试步骤里专门提醒。
-- **事件窗口约 3.3 小时**：注册记录大约 18:40 起、争议记录大约 19:20 起会从网页上消失，链上数据仍在。#1、#6 的争议详情已提前截图保存。
+- **事件窗口约 3.3 小时**：注册记录大约 18:40 起、争议记录大约 19:20 起会从网页上消失，链上数据仍在。#1、#6 的争议详情已提前截图（见 6.6）。
+- **智能账户下费用上限偏低**：审核弹窗的 fee ceiling 没有包含 MetaMask 的转发开销，见 6.4 的 F7 对比。
 - **全局数字含其他组员的订单**：订单总数、托管金额和待提现金额包括 #7、#8，对账要按订单和账户逐项核对。
 - **记录文字过于简单**：测试中写的 “aa”“test” 等只适合测试，正式演示应改用贴近真实业务的描述。
+
+### 6.6 截图索引
+
+截图都来自线上版本，存放在 [`acceptance-screenshots/`](acceptance-screenshots/)。浏览器书签栏已裁掉；B03、B04 的最终详情是页面局部截图。“视角”指截图时 MetaMask 连接的账户。
+
+| 截图 | 用例 · 步骤 | 视角 | 显示内容 |
+|---|---|---|---|
+| [B01-1-created-order4](acceptance-screenshots/B01-1-created-order4.jpg) | B01 · 1 | P | P 看到新订单 #4 为 `Created` |
+| [B01-2-accepted-order4](acceptance-screenshots/B01-2-accepted-order4.jpg) | B01 · 2 | P | 接单确认（gas used 223,368），#4 为 `Accepted` |
+| [B01-3-funded-order4](acceptance-screenshots/B01-3-funded-order4.jpg) | B01 · 3 | C | #4 为 `Funded`，C 只剩 `Open dispute` |
+| [B01-4-before-submit-order4](acceptance-screenshots/B01-4-before-submit-order4.jpg) | B01 · 4 | P | P 可以 `Submit delivery` |
+| [B01-4-submitted-order4](acceptance-screenshots/B01-4-submitted-order4.jpg) | B01 · 4 | P | #4 为 `Submitted`，交付记录 `Hash verified` |
+| [B01-5-before-approve-order4](acceptance-screenshots/B01-5-before-approve-order4.jpg) | B01 · 5 | C | C 可以 `Approve delivery` |
+| [B01-5-released-order4](acceptance-screenshots/B01-5-released-order4.jpg) | B01 · 5 | C | #4 为 `Released`，不再有操作按钮 |
+| [B01-6-provider-balance](acceptance-screenshots/B01-6-provider-balance.jpg) | B01 · 6 | P | P 可提余额 0.001，`Withdraw ETH` 可点 |
+| [B02-1-created-orders2-3](acceptance-screenshots/B02-1-created-orders2-3.jpg) | B02 · 1、4 | C | #2、#3 为 `Created` |
+| [B02-2-cancelled-order2](acceptance-screenshots/B02-2-cancelled-order2.jpg) | B02 · 2 | C | #2 为 `Cancelled` |
+| [B02-3-provider-list](acceptance-screenshots/B02-3-provider-list.jpg) | B02 · 3 | P | P 的列表：#2 `Cancelled`，#3 仍为 `Created` |
+| [B02-3-no-accept-order2](acceptance-screenshots/B02-3-no-accept-order2.jpg) | B02 · 3 | P | #2 详情没有 `Accept order` |
+| [B02-5-accepted-order3](acceptance-screenshots/B02-5-accepted-order3.jpg) | B02 · 5 | P | #3 为 `Accepted` |
+| [B02-6-before-cancel-order3](acceptance-screenshots/B02-6-before-cancel-order3.jpg) | B02 · 6 | C | #3 有 `Fund escrow` 和 `Cancel order` |
+| [B02-6-cancelled-order3](acceptance-screenshots/B02-6-cancelled-order3.jpg) | B02 · 6 | C | #3 为 `Cancelled`，不再有 `Fund escrow` |
+| [B03-1-create-order1](acceptance-screenshots/B03-1-create-order1.jpg) | B03 · 1 | C | 创建确认（gas used 873,794），#1 为 `Created` |
+| [B03-6-customer-balance](acceptance-screenshots/B03-6-customer-balance.jpg) | B03 · 6 | C | 裁决后 C 可提余额 0.001 |
+| [B03-6-refunded-order1](acceptance-screenshots/B03-6-refunded-order1.png) | B03 · 6 | — | #1 为 `Refunded`；争议原因、证据、裁决都 `Hash verified` |
+| [B04-7-provider-balance](acceptance-screenshots/B04-7-provider-balance.jpg) | B04 · 7 | P | 裁决后 P 可提余额 0.001 |
+| [B04-7-released-order6](acceptance-screenshots/B04-7-released-order6.png) | B04 · 7 | — | #6 为 `Released`；交付、争议原因、证据、裁决都 `Hash verified` |
+| [B05-2-accepted-order5](acceptance-screenshots/B05-2-accepted-order5.jpg) | B05 · 2 | C | #5 为 `Accepted`，截止 10-12 15:47 |
+| [B05-4-before-deadline-no-refund-order1](acceptance-screenshots/B05-4-before-deadline-no-refund-order1.jpg) | B05 · 4 | C | #1 已入金、未到截止：没有 `Refund overdue order` |
+| [B05-5-refund-button-order5](acceptance-screenshots/B05-5-refund-button-order5.jpg) | B05 · 5 | C | 截止后出现 `Refund overdue order` |
+| [B05-5-no-submit-order5](acceptance-screenshots/B05-5-no-submit-order5.jpg) | B05 · 5 | P | 截止后 P 没有 `Submit delivery` |
+| [F7-createOrder-gas-estimate](acceptance-screenshots/F7-createOrder-gas-estimate.webp) | F7 | C | 签名前审核弹窗：估算 602,201 gas，费用上限约 0.00072 ETH |
