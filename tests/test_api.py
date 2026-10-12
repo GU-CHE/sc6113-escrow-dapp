@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from unittest.mock import MagicMock, PropertyMock, patch
 from pathlib import Path
 from eth_account import Account
 from eth_account.messages import encode_defunct
@@ -75,6 +76,41 @@ class ApiTests(unittest.TestCase):
     def test_challenge_limit(self):
         for _ in range(5):self.assertEqual(self.post('/api/auth/challenge',{'address':self.wallet.address}).status_code,200)
         self.assertEqual(self.post('/api/auth/challenge',{'address':self.wallet.address}).status_code,429)
+    def test_invalid_pagination_rejected_before_chain_access(self):
+        for value in ('invalid','','0','-1','1.5','+2',' 2','2 ','1e3','１２','9'*79,str(2**256)):
+            with self.subTest(before=value):
+                response=self.client.get('/api/orders',query_string={'before':value})
+                self.assertEqual(response.status_code,400)
+                self.assertIn('positive integer',response.get_json()['error'])
+                self.assertNotIn('invalid literal',response.get_json()['error'])
+        self.assertEqual(self.client.get('/api/orders?before=2&before=3').status_code,400)
+        # A valid cursor still exposes real unconfigured-chain availability as 503.
+        self.assertEqual(self.client.get('/api/orders?before=2').status_code,503)
+    def test_valid_pagination_and_rpc_failure(self):
+        deployment=Path(self.tmp.name)/'configured.json'
+        deployment.write_text(json.dumps({'chainId':11155111,'network':'Sepolia','startBlock':0,
+            'addresses':{name:'0x'+'1'*40 for name in ('RoleRegistry','EscrowOrders','DisputeResolver')}}))
+        app=create_app({'TESTING':True,'SECRET_KEY':'test-only','DATABASE_URL':'sqlite:///:memory:',
+                        'DEPLOYMENT_FILE':str(deployment)})
+        self.addCleanup(app.extensions['db'].dispose)
+        contract=MagicMock()
+        contract.functions.orderCount.return_value.call.return_value=3
+        contract.functions.lockedTotal.return_value.call.return_value=0
+        contract.functions.claimableTotal.return_value.call.return_value=0
+        contract.functions.getOrder.return_value.call.return_value=('0x'+'2'*40,'0x'+'3'*40,1,1,0,bytes(32),bytes(32))
+        app.extensions['contracts']['EscrowOrders']=contract
+        client=app.test_client()
+        with patch.object(type(app.extensions['chain'].eth),'chain_id',new_callable=PropertyMock,return_value=11155111):
+            for query,expected in (('',[3,2,1]),('?before=3',[2,1]),('?before=1',[]),('?before=999',[3,2,1])):
+                with self.subTest(query=query):
+                    response=client.get('/api/orders'+query)
+                    self.assertEqual(response.status_code,200)
+                    self.assertEqual([o['id'] for o in response.get_json()['orders']],expected)
+            contract.functions.orderCount.return_value.call.side_effect=ValueError('RPC unavailable')
+            self.assertEqual(client.get('/api/orders?before=2').status_code,503)
+            contract.reset_mock()
+            self.assertEqual(client.get('/api/orders?before=invalid').status_code,400)
+            contract.functions.orderCount.assert_not_called()
     def test_shared_database_schema_rejects_unsafe_targets(self):
         for schema in ('public', 'pg_catalog', 'x;drop schema public', 'UPPERCASE'):
             with self.assertRaisesRegex(RuntimeError, 'dedicated lowercase'):

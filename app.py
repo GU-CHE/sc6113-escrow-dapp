@@ -210,12 +210,21 @@ def create_app(overrides=None):
 
     @app.route('/api/orders')
     def list_orders():
+        # Reject malformed client cursors before any chain/RPC availability check.
+        values = request.args.getlist('before')
+        before = None
+        if values:
+            if len(values) != 1 or not re.fullmatch(r'[0-9]{1,78}', values[0]):
+                return fail('before must be a positive integer',400)
+            before = int(values[0])
+            if not 1 <= before < 2**256:
+                return fail('before must be a positive integer within uint256 range',400)
         try:
             chain_ready()
             contract = contracts['EscrowOrders']
             count = contract.functions.orderCount().call()
             # Bounded newest-first window. Older orders remain accessible by ID.
-            start = min(max(int(request.args.get('before', count+1)),1),count+1)
+            start = min(before if before is not None else count+1,count+1)
             result = []
             for i in range(start-1,max(start-51,0),-1):
                 o = contract.functions.getOrder(i).call()
