@@ -20,3 +20,5 @@ Current business acceptance: B00–B05 passed on Sepolia through real MetaMask, 
 Pending: independent wallet rejection/account/network switching and physical phone acceptance, F8 optimization comparison, final report/slides/video, group contribution records and reporter retest of P5-001.
 
 - Sepolia-enabled cloud: Render commit `85a86ba` went live at 14:49 Singapore time. `/health` reports configured contracts, `/api/config` matches the verified addresses, and online order/event reads return actual Sepolia state. The prior QA metadata record remains available with its verified hash. The API unit-test fixture now explicitly provides an unconfigured temporary deployment file, independent of live repository addresses.
+
+- P5-001 release: commit `9b9567e8d2913718bef9607ec6a7a586753c1f14` passed GitHub Actions run 38269052633 (11 contract + 9 API tests), then Render deployment `dep-db6fkad9fdbs7380b8e0` became live at 23:19:16 Singapore time. Owner performed 21 successful read-only online checks; independent Member 5 retest remains pending. Evidence: `P5-001_DEPLOYMENT.md`.

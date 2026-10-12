@@ -1,2 +1,2 @@
 ID,Severity,Reporter,Environment,WalletRole,OrderID,Steps,Expected,Actual,Evidence,Owner,Status,Retest
-P5-001,P2,Member 5,Render Sepolia,Public API,,GET /api/orders?before=invalid,HTTP 400,Was HTTP 503,docs/part5/evidence/live-results.json,Mr.Mister,Fixed awaiting deployment and reporter retest,Member 5 to retest after deployment
+P5-001,P2,Member 5,Render Sepolia,Public API,,GET /api/orders?before=invalid,HTTP 400,Was HTTP 503,docs/part5/evidence/live-results.json,Mr.Mister,Fixed deployed awaiting reporter retest,Member 5 to retest deployed 9b9567e; see docs/P5-001_DEPLOYMENT.md

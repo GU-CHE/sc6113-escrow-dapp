@@ -1,0 +1,25 @@
+{
+  "defect": "P5-001",
+  "status": "FIXED_DEPLOYED_AWAITING_REPORTER_RETEST",
+  "codeFixCommit": "2f615e1",
+  "deployedCommit": "9b9567e8d2913718bef9607ec6a7a586753c1f14",
+  "renderServiceId": "srv-db5rv4ivcj2c7392k5r0",
+  "renderDeploymentId": "dep-db6fkad9fdbs7380b8e0",
+  "renderDeploymentURL": "https://dashboard.render.com/web/srv-db5rv4ivcj2c7392k5r0/deploys/dep-db6fkad9fdbs7380b8e0",
+  "deploymentTriggeredAtSingapore": "2026-10-12T23:18:01+08:00",
+  "serviceLiveAtSingapore": "2026-10-12T23:19:16+08:00",
+  "serviceLiveTimeSource": "Render deployment log: 11:19:16 PM ==> Your service is live",
+  "ownerVerificationCompletedAtUTC": "2026-10-12T15:20:09.746226+00:00",
+  "ownerVerificationSummary": {
+    "PASS": 21,
+    "FAIL": 0
+  },
+  "ciRun": "https://github.com/GU-CHE/sc6113-escrow-dapp/actions/runs/38269052633",
+  "ciConclusion": "success",
+  "mergedPRs": {
+    "1": "34a76c204c9f5f72492089cd67f49c1ba09d534b",
+    "2": "b82971ab048b83e62d466a672653231caffbb531"
+  },
+  "screenshot": "render-p5-001-deployment.png",
+  "sourceVersionNote": "A later documentation-only commit stores deployment evidence. The live runtime remains the deployedCommit above; compare app.py and contract/config artifacts rather than assuming current main SHA is already deployed."
+}
