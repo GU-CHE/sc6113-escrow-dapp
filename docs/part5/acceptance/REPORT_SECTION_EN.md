@@ -16,24 +16,35 @@ The configured cloud data store is PostgreSQL, with a dedicated sc6113_escrow_gr
 
 ## Deployment and acceptance results
 
-At 19:19 Singapore time on 12 October 2026, 30 bounded live API checks produced 29 passes and one nonblocking defect. The public configuration used chain ID 11155111, and all three contract addresses and ABIs matched source revision 99b4877. Served JavaScript and CSS also matched that snapshot. These observations confirm configuration and asset consistency, not the exact running backend commit; that requires the Render deployment record.
+At 19:19 Singapore time on 12 October 2026, 30 bounded live API checks produced 29 passes and one nonblocking defect. The public configuration used chain ID 11155111, and all three contract addresses and ABIs matched source revision 99b4877. Served JavaScript and CSS also matched that snapshot. These original observations confirm configuration and asset consistency. A later owner-supplied Render deployment record and screenshot identify the deployed fix, as described below; HTTP responses alone do not attest a Git revision.
 
 The service returned eight orders, 0.001 test ETH locked and zero claimable ETH at the observation time. The order endpoint took approximately 4.10 seconds and the event endpoint approximately 0.82 seconds in this single sample. Three further health and content-integrity observations were taken 20 seconds apart. These are short functional availability samples, not load-test results or an uptime guarantee. Cloud free-tier sleep, RPC availability and database lifetime remain operational dependencies.
 
 ## Defect and limitations
 
-An invalid pagination parameter, GET /api/orders?before=invalid, returned HTTP 503 with a Python integer-parsing message instead of a controlled client-error response. This is classified as P2 for this acceptance because normal application-generated requests work and the check did not change funds or records. The recommended fix is to validate pagination before performing RPC work, return a clear HTTP 400 response for invalid input, and retain HTTP 503 for upstream failures. The original reporter should retest the deployed fix before closing the defect.
+An invalid pagination parameter, GET /api/orders?before=invalid, returned HTTP 503 with a Python integer-parsing message instead of a controlled client-error response. This is classified as P2 for this acceptance because normal application-generated requests work and the check did not change funds or records. The recommended fix is to validate pagination before performing RPC work, return a clear HTTP 400 response for invalid input, and retain HTTP 503 for upstream failures. The original reporter's Part 5 independent retest has now passed and closed P5-001 in the owned acceptance records; the original failure remains preserved.
 
 The existing GitHub Actions run for revision 99b4877 succeeded. An attempted local Python rerun was blocked before tests executed by Windows application-control policy preventing a native cryptography module from loading. Consequently, local execution is not reported as passed. The separate Node.js 24.19.0 and ethers 6.15.0 live acceptance results are recorded in evidence/live-results.json. The Part 5 package does not claim production security certification, a new restart test, or completion of the separate Gas optimization task.
 
 ## Publication update
 
-At 20:07 Singapore time on 12 October 2026, six separately recorded read-only checks passed: health, configuration/ABIs, orders, events and both existing QA digests. The first health response took 31.677 seconds; its cause was not independently established. These checks created no metadata, login session or blockchain transaction and performed no restart or deployment. The historical 30-case result remains 29 PASS/one FAIL; P5-001 remains OPEN.
+At 20:07 Singapore time on 12 October 2026, six separately recorded read-only checks passed: health, configuration/ABIs, orders, events and both existing QA digests. The first health response took 31.677 seconds; its cause was not independently established. These checks created no metadata, login session or blockchain transaction and performed no restart or deployment. The historical 30-case result remains 29 PASS/one FAIL. P5-001 was still OPEN at that publication time; the later retest below closes it.
 
 An initial restricted-network attempt obtained no HTTP responses and is classified NOT RUN for application acceptance. Its raw transport failures are retained separately. See evidence/DEPLOYMENT_EN.md and evidence/publication-read-2026-10-12T12-07-16-208Z.json for the successful observations and evidence limits.
 
+## Independent post-fix retest and closure
+
+On 13 October 2026 at 00:19:50-00:20:47 Singapore time, fourteen independently executed read-only checks passed. The original malformed request and six additional invalid cursor cases returned controlled JSON HTTP 400. Normal, exclusive and empty pagination returned HTTP 200 with the expected order IDs. Health before/after and both existing canonical-content digests also passed. No login, application write, blockchain transaction, restart or deployment was performed. The first health response took 42.679 seconds; its cause is not established, and these samples are not an uptime guarantee.
+
+The owner supplied deployed commit 9b9567e8d2913718bef9607ec6a7a586753c1f14, Render deployment dep-db6fkad9fdbs7380b8e0 and live time 12 October 2026 at 23:19:16 Singapore time. Part 5 inspected the saved record and screenshot; this is attributed owner evidence, not direct access to Render's private console/API. The source fix and successful deployed-revision CI provide separate regression evidence, including simulated RPC failure remaining HTTP 503. No shared-cloud failure was induced.
+
+P5-001 is RETEST PASS / CLOSED in Part 5. The original 29/1 result, six publication GETs, owner 21-check run and reporter 14-check retest remain separate. Member 6 can integrate this closure into the shared defect register without altering the original failure evidence. Direct live Git-revision attestation and private database settings remain unverified by Part 5.
+
 ## Evidence
 
+- Independent retest and closure: evidence/RETEST_EN.md
+- Post-fix raw results: evidence/p5-001-retest-2026-10-12T16-19-50-547Z.json
+- Deployment and CI provenance: evidence/retest-provenance-2026-10-13.json
 - Live results: evidence/live-results.json
 - Availability samples: evidence/stability-samples.json
 - Reproduction script: acceptance/part5_live.cjs

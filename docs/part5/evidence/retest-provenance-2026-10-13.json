@@ -1,0 +1,96 @@
+{
+  "observedAtUTC": "2026-10-12T16:20:42.883Z",
+  "sourceBaseline": "41e887576f32e1eec45505c9e39b9b719039f92f",
+  "branch": "codex/part5-p5-001-retest",
+  "checkout": "group-project-part5/repo (independent team Git root)",
+  "initialWorkingTree": "clean before the new helper was created",
+  "part5FilesUnchangedSinceOriginalContribution": true,
+  "originalContributionCommit": "368d2385174e61aba4dbdd72b72dffe21689f252",
+  "pr2": {
+    "url": "https://github.com/GU-CHE/sc6113-escrow-dapp/pull/2",
+    "merged": true,
+    "mergedAtUTC": "2026-10-12T15:16:41Z",
+    "mergeCommit": "b82971ab048b83e62d466a672653231caffbb531"
+  },
+  "fixCommit": "2f615e132d1d1eff95c787890798c0096fe55700",
+  "ownerReportedDeployment": {
+    "commit": "9b9567e8d2913718bef9607ec6a7a586753c1f14",
+    "renderDeploymentId": "dep-db6fkad9fdbs7380b8e0",
+    "liveAtSingapore": "2026-10-12T23:19:16+08:00",
+    "record": "https://github.com/GU-CHE/sc6113-escrow-dapp/blob/41e887576f32e1eec45505c9e39b9b719039f92f/docs/review/p5-001-deployment.json",
+    "screenshot": "https://github.com/GU-CHE/sc6113-escrow-dapp/blob/41e887576f32e1eec45505c9e39b9b719039f92f/docs/review/render-p5-001-deployment.png",
+    "screenshotInspected": true,
+    "attribution": "Owner-supplied deployment record and screenshot. The screenshot shows short source 9b9567e, deployment ID and succeeded/live status. The 23:19:16 live-log time is attributed to the owner record, not visible in that screenshot. No direct Render console/API attestation by Part 5."
+  },
+  "deployedRevisionCI": {
+    "id": 38269052633,
+    "url": "https://github.com/GU-CHE/sc6113-escrow-dapp/actions/runs/38269052633",
+    "headSHA": "9b9567e8d2913718bef9607ec6a7a586753c1f14",
+    "status": "completed",
+    "conclusion": "success",
+    "updatedAtUTC": "2026-10-12T15:17:21Z",
+    "jobs": [
+      {
+        "id": 114878457636,
+        "name": "test",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run pnpm/action-setup@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run pnpm install --frozen-lockfile",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run pnpm run compile",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run pnpm test",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run pip install -r requirements.txt",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m unittest discover -s tests -p 'test_*.py' -v",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  "mainCI": [
+    {
+      "id": 38269762536,
+      "url": "https://github.com/GU-CHE/sc6113-escrow-dapp/actions/runs/38269762536",
+      "headSHA": "41e887576f32e1eec45505c9e39b9b719039f92f",
+      "conclusion": "success"
+    }
+  ],
+  "sourceDifference": "Only seven documentation/evidence files differ between the owner-reported deployment and this baseline. Application source is identical.",
+  "languageScope": "Owned Part 5 authored documents, helpers, filenames and publication text are English. Existing external references and canonical multilingual fixture semantics remain unchanged."
+}

@@ -1,0 +1,28 @@
+{
+  "defect": "P5-001",
+  "status": "RETEST PASS / CLOSED",
+  "scope": "Owned Part 5 records; shared defect register awaits coordinator integration.",
+  "closedAtUTC": "2026-10-12T16:20:47.057Z",
+  "historicalResult": "Original E01 remains FAIL; 29 PASS / 1 FAIL across 30 checks.",
+  "retest": "p5-001-retest-2026-10-12T16-19-50-547Z.json",
+  "retestSummary": {
+    "PASS": 14,
+    "FAIL": 0,
+    "NOT RUN": 0
+  },
+  "deployment": {
+    "commit": "9b9567e8d2913718bef9607ec6a7a586753c1f14",
+    "renderDeploymentId": "dep-db6fkad9fdbs7380b8e0",
+    "serviceLiveAtSingapore": "2026-10-12T23:19:16+08:00",
+    "attribution": "Owner-supplied repository record and Render screenshot; not direct console/API attestation by Part 5."
+  },
+  "closureBasis": "Owner-supplied deployment record and inspected screenshot plus independent passing malformed/valid pagination, health and content-integrity checks.",
+  "fixOwner": "Member 1",
+  "retestOwner": "Part 5",
+  "assistance": "Codex-assisted automated HTTP execution and evidence review.",
+  "limitations": [
+    "No direct private Render/API attestation of live Git revision.",
+    "No new local Python execution or induced live RPC outage.",
+    "No new login, data write, restart, deployment or blockchain transaction."
+  ]
+}

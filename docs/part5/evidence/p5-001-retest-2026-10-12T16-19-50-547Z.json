@@ -1,0 +1,320 @@
+{
+  "defect": "P5-001",
+  "startedAtUTC": "2026-10-12T16:19:50.547Z",
+  "completedAtUTC": "2026-10-12T16:20:47.057Z",
+  "origin": "https://sc6113-escrow-dapp.onrender.com",
+  "referenceRevision": "41e887576f32e1eec45505c9e39b9b719039f92f",
+  "helperSHA256": "e378ba977dd0b50d7833546ff647725bc298d3fd807b529c512d96479bb1eef4",
+  "ownerReportedDeployment": {
+    "commit": "9b9567e8d2913718bef9607ec6a7a586753c1f14",
+    "renderDeploymentId": "dep-db6fkad9fdbs7380b8e0",
+    "serviceLiveAtSingapore": "2026-10-12T23:19:16+08:00",
+    "attribution": "Owner-supplied repository record and Render screenshot; not direct console/API attestation by Part 5."
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "win32 10.0.26200",
+    "ethers": "6.15.0"
+  },
+  "scope": "Independent read-only HTTP acceptance. No authentication, application writes, restart, deployment or blockchain transaction. Normal content reads are not a new restart test. Live RPC failure is not induced.",
+  "results": [
+    {
+      "id": "R01",
+      "method": "GET",
+      "endpoint": "/health",
+      "expectedHTTP": 200,
+      "expectation": "Healthy database and configured contracts before retest",
+      "timeUTC": "2026-10-12T16:19:50.548Z",
+      "http": 200,
+      "responseMs": 42679,
+      "responseSHA256": "05db09f7ca5dcda45596424487859cc671586107b6468816fe2ddefcb29a32e3",
+      "contentType": "application/json",
+      "body": {
+        "contractsConfigured": true,
+        "status": "ok"
+      },
+      "observed": {
+        "databaseReachable": true,
+        "contractsConfigured": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R02",
+      "method": "GET",
+      "endpoint": "/api/orders?before=invalid",
+      "expectedHTTP": 400,
+      "expectation": "Controlled JSON pagination error",
+      "timeUTC": "2026-10-12T16:20:33.228Z",
+      "http": 400,
+      "responseMs": 639,
+      "responseSHA256": "e4472dcc3da7574f7226ce4187660a15a4dc42157c6fb6da5ce0b64c27db1cde",
+      "contentType": "application/json",
+      "body": {
+        "error": "before must be a positive integer"
+      },
+      "observed": {
+        "controlledParameterError": true,
+        "rawPythonErrorAbsent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R03",
+      "method": "GET",
+      "endpoint": "/api/orders?before=",
+      "expectedHTTP": 400,
+      "expectation": "Controlled JSON pagination error",
+      "timeUTC": "2026-10-12T16:20:33.868Z",
+      "http": 400,
+      "responseMs": 315,
+      "responseSHA256": "e4472dcc3da7574f7226ce4187660a15a4dc42157c6fb6da5ce0b64c27db1cde",
+      "contentType": "application/json",
+      "body": {
+        "error": "before must be a positive integer"
+      },
+      "observed": {
+        "controlledParameterError": true,
+        "rawPythonErrorAbsent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R04",
+      "method": "GET",
+      "endpoint": "/api/orders?before=0",
+      "expectedHTTP": 400,
+      "expectation": "Controlled JSON pagination error",
+      "timeUTC": "2026-10-12T16:20:34.183Z",
+      "http": 400,
+      "responseMs": 317,
+      "responseSHA256": "1a279adcedc1d4d0ae55b915e430d047f0ea86579899821d9184710669978052",
+      "contentType": "application/json",
+      "body": {
+        "error": "before must be a positive integer within uint256 range"
+      },
+      "observed": {
+        "controlledParameterError": true,
+        "rawPythonErrorAbsent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R05",
+      "method": "GET",
+      "endpoint": "/api/orders?before=-1",
+      "expectedHTTP": 400,
+      "expectation": "Controlled JSON pagination error",
+      "timeUTC": "2026-10-12T16:20:34.500Z",
+      "http": 400,
+      "responseMs": 326,
+      "responseSHA256": "e4472dcc3da7574f7226ce4187660a15a4dc42157c6fb6da5ce0b64c27db1cde",
+      "contentType": "application/json",
+      "body": {
+        "error": "before must be a positive integer"
+      },
+      "observed": {
+        "controlledParameterError": true,
+        "rawPythonErrorAbsent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R06",
+      "method": "GET",
+      "endpoint": "/api/orders?before=2&before=3",
+      "expectedHTTP": 400,
+      "expectation": "Controlled JSON pagination error",
+      "timeUTC": "2026-10-12T16:20:34.826Z",
+      "http": 400,
+      "responseMs": 307,
+      "responseSHA256": "e4472dcc3da7574f7226ce4187660a15a4dc42157c6fb6da5ce0b64c27db1cde",
+      "contentType": "application/json",
+      "body": {
+        "error": "before must be a positive integer"
+      },
+      "observed": {
+        "controlledParameterError": true,
+        "rawPythonErrorAbsent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R07",
+      "method": "GET",
+      "endpoint": "/api/orders?before=1.5",
+      "expectedHTTP": 400,
+      "expectation": "Controlled JSON pagination error",
+      "timeUTC": "2026-10-12T16:20:35.133Z",
+      "http": 400,
+      "responseMs": 359,
+      "responseSHA256": "e4472dcc3da7574f7226ce4187660a15a4dc42157c6fb6da5ce0b64c27db1cde",
+      "contentType": "application/json",
+      "body": {
+        "error": "before must be a positive integer"
+      },
+      "observed": {
+        "controlledParameterError": true,
+        "rawPythonErrorAbsent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R08",
+      "method": "GET",
+      "endpoint": "/api/orders?before=115792089237316195423570985008687907853269984665640564039457584007913129639936",
+      "expectedHTTP": 400,
+      "expectation": "Controlled JSON pagination error",
+      "timeUTC": "2026-10-12T16:20:35.492Z",
+      "http": 400,
+      "responseMs": 308,
+      "responseSHA256": "1a279adcedc1d4d0ae55b915e430d047f0ea86579899821d9184710669978052",
+      "contentType": "application/json",
+      "body": {
+        "error": "before must be a positive integer within uint256 range"
+      },
+      "observed": {
+        "controlledParameterError": true,
+        "rawPythonErrorAbsent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R09",
+      "method": "GET",
+      "endpoint": "/api/orders",
+      "expectedHTTP": 200,
+      "expectation": "Bounded newest-first page",
+      "timeUTC": "2026-10-12T16:20:35.800Z",
+      "http": 200,
+      "responseMs": 5173,
+      "responseSHA256": "100ea788fef023be8722c461f0747160c9a3038b8bd44be905c170b9586a3550",
+      "contentType": "application/json",
+      "observed": {
+        "total": 8,
+        "ids": [
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "exclusiveCursor": null,
+        "lockedWei": "1000000000000000",
+        "claimableWei": "0"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R10",
+      "method": "GET",
+      "endpoint": "/api/orders?before=6",
+      "expectedHTTP": 200,
+      "expectation": "Descending order IDs strictly below 6",
+      "timeUTC": "2026-10-12T16:20:40.975Z",
+      "http": 200,
+      "responseMs": 3683,
+      "responseSHA256": "cb236d092a490bd316794d4ba52b87167b1bac13a6825b7f9df5788f52e5e72b",
+      "contentType": "application/json",
+      "observed": {
+        "total": 8,
+        "ids": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "exclusiveCursor": 6,
+        "lockedWei": "1000000000000000",
+        "claimableWei": "0"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R11",
+      "method": "GET",
+      "endpoint": "/api/orders?before=1",
+      "expectedHTTP": 200,
+      "expectation": "Empty page at the first-order boundary",
+      "timeUTC": "2026-10-12T16:20:44.658Z",
+      "http": 200,
+      "responseMs": 1431,
+      "responseSHA256": "43dda43447f53707897b6f6d3ffd7a77881558b26175675d4547557e6b6f9f8f",
+      "contentType": "application/json",
+      "observed": {
+        "total": 8,
+        "ids": [],
+        "exclusiveCursor": 1,
+        "lockedWei": "1000000000000000",
+        "claimableWei": "0"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R12",
+      "method": "GET",
+      "endpoint": "/api/content/0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+      "expectedHTTP": 200,
+      "expectation": "Historical content hash remains valid",
+      "timeUTC": "2026-10-12T16:20:46.090Z",
+      "http": 200,
+      "responseMs": 352,
+      "responseSHA256": "a10e3ef650091a6604ab667c1a372b76c2983ced81a7a3ee72859d0c98e53c96",
+      "contentType": "application/json",
+      "observed": {
+        "digest": "0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+        "canonicalKeccakVerified": true,
+        "documentMatchesCanonical": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R13",
+      "method": "GET",
+      "endpoint": "/api/content/0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+      "expectedHTTP": 200,
+      "expectation": "Part 5 QA content hash remains valid",
+      "timeUTC": "2026-10-12T16:20:46.444Z",
+      "http": 200,
+      "responseMs": 311,
+      "responseSHA256": "4b0031f746d1451e8308e337d0b5a035c218336f8402e002a193fafe22d73782",
+      "contentType": "application/json",
+      "observed": {
+        "digest": "0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+        "canonicalKeccakVerified": true,
+        "documentMatchesCanonical": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "R14",
+      "method": "GET",
+      "endpoint": "/health",
+      "expectedHTTP": 200,
+      "expectation": "Healthy database and configured contracts after retest",
+      "timeUTC": "2026-10-12T16:20:46.756Z",
+      "http": 200,
+      "responseMs": 301,
+      "responseSHA256": "05db09f7ca5dcda45596424487859cc671586107b6468816fe2ddefcb29a32e3",
+      "contentType": "application/json",
+      "body": {
+        "contractsConfigured": true,
+        "status": "ok"
+      },
+      "observed": {
+        "databaseReachable": true,
+        "contractsConfigured": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "PASS": 14,
+    "FAIL": 0,
+    "NOT RUN": 0
+  }
+}

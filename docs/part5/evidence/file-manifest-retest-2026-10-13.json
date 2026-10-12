@@ -1,0 +1,165 @@
+{
+  "scope": "Updated Part 5 payload excluding this manifest. Original file-manifest.json is preserved and applies only to commit 368d2385174e61aba4dbdd72b72dffe21689f252.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 168,
+      "sha256": "3afa149b1c5c764d3e55ff99b24b9fc813a196573b068ce391029578fc94864e"
+    },
+    {
+      "path": "acceptance/BACKEND_ACCEPTANCE_EN.md",
+      "bytes": 12918,
+      "sha256": "9090a609287f969ef32c949839f7f4f9922b74e8c999b99e2670ac3ba3cca924"
+    },
+    {
+      "path": "acceptance/build_report.py",
+      "bytes": 4279,
+      "sha256": "c8dbda72b36d12152d38e6ef6b01748fcefa54e8680ae31485ea2498a0cfd791"
+    },
+    {
+      "path": "acceptance/part5_live.cjs",
+      "bytes": 14111,
+      "sha256": "2f0e71570e40929213fa1d0dba8d7751e394e730d44b1e4f6347524e418f97ff"
+    },
+    {
+      "path": "acceptance/part5_stability.cjs",
+      "bytes": 1791,
+      "sha256": "4957a517852ec139f0f87eb411c00ca6929fe8d2839a0ab1fe55c26b7530df3d"
+    },
+    {
+      "path": "acceptance/publication_read.cjs",
+      "bytes": 4904,
+      "sha256": "f09149b5f8ee23bfdc0327a4bbb4950b9d6c2fb9bba99ad3fb012e01edac3db6"
+    },
+    {
+      "path": "acceptance/REPORT_SECTION_EN.md",
+      "bytes": 8380,
+      "sha256": "14c16c8048ed70f064b3eea5274326f125a08e48d81e26f579e8aea40df9773e"
+    },
+    {
+      "path": "acceptance/retest_p5_001.cjs",
+      "bytes": 6162,
+      "sha256": "e378ba977dd0b50d7833546ff647725bc298d3fd807b529c512d96479bb1eef4"
+    },
+    {
+      "path": "CONTRIBUTION_EN.md",
+      "bytes": 2553,
+      "sha256": "99cabaffcdb8b671243f97989712490071ec3bdc0d7e12fa97d1c4c41cc036d6"
+    },
+    {
+      "path": "evidence/ci-verification.json",
+      "bytes": 240,
+      "sha256": "625e5d51dccae57b4c00e7763d837ec82ed5ef93d79f20a962ca4166bdb43c4e"
+    },
+    {
+      "path": "evidence/COVERAGE_EN.md",
+      "bytes": 6637,
+      "sha256": "274c350e6c06096b067700dbc00ff3d8d024d85979f037a1f377bede86bf4665"
+    },
+    {
+      "path": "evidence/defect-status-2026-10-13.json",
+      "bytes": 1274,
+      "sha256": "f0ab9dc93bbf82ab72bfe52e16f1f47af768b57026af3ca9a0b5fe3d29072e3c"
+    },
+    {
+      "path": "evidence/DEFECT_HANDOFF_EN.md",
+      "bytes": 2417,
+      "sha256": "b4b3a89b6af98c771f0b4985a3a3d47dac914762d3aa5781bda0c8c46991ecda"
+    },
+    {
+      "path": "evidence/defects.json",
+      "bytes": 839,
+      "sha256": "c3e5adda50d4c0a9cc3ddfbe8ff72c8a0a838f5663ff7832d5b723742c50bf79"
+    },
+    {
+      "path": "evidence/DEPLOYMENT_EN.md",
+      "bytes": 7901,
+      "sha256": "5664dcc87157e412124a5c006c8d4dac84ad3fd519564fee653927f347b1288f"
+    },
+    {
+      "path": "evidence/file-manifest.json",
+      "bytes": 4278,
+      "sha256": "6d679eeedf911a80ac1f62259231a72c4492986b57fafc8185c8e393cb7c3c6a"
+    },
+    {
+      "path": "evidence/live-results.json",
+      "bytes": 11719,
+      "sha256": "69716d1ff4ae07f74d37fb1d434bcd8444dd2ac7bdb6247786817abfe1e8117e"
+    },
+    {
+      "path": "evidence/local-python-attempt_EN.txt",
+      "bytes": 1359,
+      "sha256": "299d98297cee130ddec590d8e1db8bc45bccb7075c253a4e6f0abf9d77f4432b"
+    },
+    {
+      "path": "evidence/original-evidence-manifest.json",
+      "bytes": 1288,
+      "sha256": "95f8921c02f088cc55b2ca9636b88e75988ed596ab0f92f90bbefdb70bb563b3"
+    },
+    {
+      "path": "evidence/p5-001-retest-2026-10-12T16-19-50-547Z.json",
+      "bytes": 10077,
+      "sha256": "0b474abdbf67293b66f7c99c345b36e47b7357cb0fbf3bb67e8ef94287e8330a"
+    },
+    {
+      "path": "evidence/package-validation.json",
+      "bytes": 1150,
+      "sha256": "2537546381db95b4f11b6f6fa6d60074e78f5958ac53468ab441efb1186e7cb2"
+    },
+    {
+      "path": "evidence/provenance.json",
+      "bytes": 634,
+      "sha256": "f9ee5d42dc11a6ee4b579e3d2c34efa624ed7c9ae39bfe3a7195c0a5036cfcfb"
+    },
+    {
+      "path": "evidence/publication-read-2026-10-12T12-07-01-782Z.json",
+      "bytes": 1930,
+      "sha256": "b5c0afa027d9c06400771f463cbc3a99c5bb32cba847e6d2e0bea72c9140e2b6"
+    },
+    {
+      "path": "evidence/publication-read-2026-10-12T12-07-16-208Z.json",
+      "bytes": 2971,
+      "sha256": "18814b01a0061a822a9824806bc4cdd14037fc98c1507f49dd4d8751b0f89370"
+    },
+    {
+      "path": "evidence/repository-baseline.json",
+      "bytes": 3666,
+      "sha256": "ee8ee53e71f470df5f1480d45611c7476cdb43794409c480f162b25d87299683"
+    },
+    {
+      "path": "evidence/requirements-attempted-python.txt",
+      "bytes": 999,
+      "sha256": "406b4186eb7354b76cd77d9072287393478b56a5712fcb2f3a6c68c3b7be7e10"
+    },
+    {
+      "path": "evidence/retest-package-validation-2026-10-13.json",
+      "bytes": 1468,
+      "sha256": "1a57108a299da7b661a97432797899dda2374e4138d33e0598d72d6b5bde8417"
+    },
+    {
+      "path": "evidence/retest-provenance-2026-10-13.json",
+      "bytes": 3776,
+      "sha256": "a36e58402eee7a377ab788d2e49b17d70ed3f597d4b21ddd736c89f236b2ff9a"
+    },
+    {
+      "path": "evidence/RETEST_EN.md",
+      "bytes": 5663,
+      "sha256": "0cdbdefc08fe5aa2e33794340770b7518e9cca315ceb9767de39800c367130cb"
+    },
+    {
+      "path": "evidence/stability-samples.json",
+      "bytes": 538,
+      "sha256": "58ef7688b23b4622a5b86ab75597fdf927baf8e933d4806c3bdb119a8ce8dd5c"
+    },
+    {
+      "path": "output/pdf/Part5_Backend_Deployment_Acceptance_EN.pdf",
+      "bytes": 16084,
+      "sha256": "1d567612cbda5f187f56143c26be8f18f3134e2455d604ba3c0ac093888b960f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6665,
+      "sha256": "9ae34a18e2e37550438d771f6e7e93bc0fd37c80bb81adccb8ec3e8b13be433c"
+    }
+  ]
+}

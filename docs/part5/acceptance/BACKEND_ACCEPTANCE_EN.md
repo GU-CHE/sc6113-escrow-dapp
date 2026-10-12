@@ -1,6 +1,6 @@
 # Backend and Deployment Acceptance
 
-SC6113 Group Project - Part 5. Acceptance covers wallet login, content hashes, database persistence, online service behavior and deployment records. On 12 October 2026 at 19:19 Singapore time, 30 live API checks produced 29 passes and one open P2 defect.
+SC6113 Group Project - Part 5. Acceptance covers wallet login, content hashes, database persistence, online service behavior and deployment records. On 12 October 2026 at 19:19 Singapore time, 30 live API checks produced 29 passes and one proposed P2 defect. A separate independent retest on 13 October 2026 at 00:19-00:20 Singapore time passed all 14 checks; P5-001 is now RETEST PASS / CLOSED in Part 5. The original results remain unchanged.
 
 No business order or funds were changed. The only new application content was one explicitly labelled public QA metadata record. An unfunded disposable account was used for message signing. Persistence evidence combines an existing team restart record with an independent later hash check; no new Render restart was performed.
 
@@ -9,17 +9,17 @@ No business order or funds were changed. The only new application content was on
 | Item | Recorded value |
 |---|---|
 | Live service | https://sc6113-escrow-dapp.onrender.com |
-| Reference revision | 99b4877f868d6811f6ed125379d8bc29e6690204 |
+| Original reference revision | 99b4877f868d6811f6ed125379d8bc29e6690204 |
 | Network | Sepolia, chain ID 11155111 |
 | Execution environment | Windows 11; Node.js 24.19.0; repository-vendored ethers 6.15.0 |
 | Method | Automated HTTP requests and in-memory wallet message signing, assisted by Codex. This is API acceptance, not manual MetaMask interaction. |
-| Deployed version evidence | Public addresses, ABIs, app.js and styles.css matched the reference snapshot. The exact running backend revision requires a Render deployment record. |
+| Deployed version evidence | Public addresses, ABIs, app.js and styles.css matched the reference snapshot. Owner-supplied Render record and screenshot now identify deployment 9b9567e; see the post-fix record. Public reads alone do not attest a live Git revision. |
 | Local Python attempt | The existing seven-test API suite did not execute: Windows application control blocked a native cryptography module during import. No local pass is claimed. |
 | Existing CI | GitHub Actions succeeded for revision 99b4877. This existing CI result is separate from the 29 live checks passed in this acceptance run. |
 
 ## Acceptance coverage
 
-Case IDs below belong to this Part 5 package. They do not replace similarly named cases in the team's ACCEPTANCE.md. Expected results, observations and timestamps are recorded in evidence/live-results.json.
+Case IDs below belong to this Part 5 package. They do not replace similarly named cases in the team's ACCEPTANCE.md. Historical expected results, observations and timestamps are recorded in evidence/live-results.json. This table preserves the original run; new retest results are separate.
 
 | Area | Cases | Result |
 |---|---|---|
@@ -32,7 +32,7 @@ Case IDs below belong to this Part 5 package. They do not replace similarly name
 | Write protection | A11-A14 | PASS. Missing/incorrect CSRF, invalid content kind and oversized descriptions were rejected. |
 | Content integrity | H01-H05 | PASS. Unicode hashing, authenticated authorship, repeated submission, public reads and invalid/unknown hashes. |
 | Logout | A15-A17 | PASS. Logout cleared the session; the previous CSRF token could no longer authorize writes. |
-| Invalid pagination | E01 | FAIL. Expected HTTP 400; observed HTTP 503. Recorded as open defect P5-001. |
+| Invalid pagination | E01 | Historical FAIL: HTTP 503 instead of 400. P5-001 later passed independent retest R02; see the separate closure record. |
 
 Challenge expiry, per-address challenge limits and database schema validation are covered by the existing repository API suite; they were not independently repeated in these 30 live checks. The attempted local rerun was blocked before execution.
 
@@ -70,9 +70,9 @@ The team's cloud verification record at 14:50 Singapore time on 12 October lists
 
 ## Defect P5-001
 
-Proposed severity: P2. Status: OPEN. GET /api/orders?before=invalid was expected to return HTTP 400 with a controlled parameter error. It returned HTTP 503 with the message: invalid literal for int() with base 10: 'invalid'. Valid application-generated requests worked, and the probe changed no orders, funds or stored content.
+Proposed severity: P2. Current status: RETEST PASS / CLOSED in Part 5 on 13 October 2026. Historical reproduction: GET /api/orders?before=invalid was expected to return HTTP 400 with a controlled parameter error. It returned HTTP 503 with the message: invalid literal for int() with base 10: 'invalid'. Valid application-generated requests worked, and the probe changed no orders, funds or stored content.
 
-Recommended fix: validate the pagination parameter before performing RPC calls; return HTTP 400 for invalid input and retain HTTP 503 for upstream failures. After deployment of a fix, retest invalid input and valid pagination before closing the issue. No fix or successful retest is claimed in this report.
+Member 1 implemented pagination validation before RPC calls in commit 2f615e1 and supplied deployment evidence for commit 9b9567e8d2913718bef9607ec6a7a586753c1f14, Render deployment dep-db6fkad9fdbs7380b8e0, live at 23:19:16 Singapore time on 12 October. Part 5 inspected the owner record and screenshot and independently retested the public service. Direct private Render/API attestation was not performed. The source and successful owner-revision CI also cover retaining HTTP 503 for genuine upstream failure; no live RPC failure was induced.
 
 ## Deliverables and contribution
 
@@ -86,9 +86,19 @@ All authored submission documents, filenames, headings and instructions are in E
 
 ## Publication update
 
-At 20:07 Singapore time on 12 October 2026, six separately recorded read-only checks passed: health, configuration/ABIs, orders, events and both existing QA digests. The first health response took 31.677 seconds; its cause was not independently established. These checks created no metadata, login session or blockchain transaction and performed no restart or deployment. The historical 30-case result remains 29 PASS/one FAIL; P5-001 remains OPEN.
+At 20:07 Singapore time on 12 October 2026, six separately recorded read-only checks passed: health, configuration/ABIs, orders, events and both existing QA digests. The first health response took 31.677 seconds; its cause was not independently established. These checks created no metadata, login session or blockchain transaction and performed no restart or deployment. The historical 30-case result remains 29 PASS/one FAIL. P5-001 was still OPEN at that publication time; the later retest below closes it.
 
 An initial restricted-network attempt obtained no HTTP responses and is classified NOT RUN for application acceptance. Its raw transport failures are retained separately. See evidence/DEPLOYMENT_EN.md and evidence/publication-read-2026-10-12T12-07-16-208Z.json for the successful observations and evidence limits.
+
+## Independent post-fix retest
+
+On 13 October 2026 at 00:19:50-00:20:47 Singapore time, fourteen bounded GET checks passed. R02 reproduced the original request and received HTTP 400 with the controlled JSON error before must be a positive integer. R03-R08 rejected empty, zero, negative, duplicate, decimal and uint256-overflow cursors with HTTP 400. R09-R11 returned HTTP 200 for the normal newest-first page, the exclusive before=6 page and the empty before=1 page.
+
+R01/R14 confirmed healthy database connectivity and configured contracts before/after; R12/R13 verified both existing content hashes. The first health response took 42.679 seconds, with no independently established cause; the final one took 301 ms. No login, content write, transaction, restart or deployment was performed. These are functional observations, not long-term availability or a new restart test.
+
+The reviewed source baseline was 41e887576f32e1eec45505c9e39b9b719039f92f. Deployed-revision CI run 38269052633 succeeded; its nine API test methods include cursor and simulated RPC-failure regressions. Owner CI and the owner's 21-check live run remain separate from this independent 14-check result. The Windows local Python suite was not retried.
+
+The attributed owner deployment evidence and passing independent retest satisfy the agreed P5-001 closure criteria. The shared defect register still requires coordinator integration; Part 5 does not edit it. See evidence/RETEST_EN.md, evidence/p5-001-retest-2026-10-12T16-19-50-547Z.json and evidence/retest-provenance-2026-10-13.json. Private database settings and direct live revision attestation remain outside the verified scope.
 
 ## Evidence index
 
@@ -103,6 +113,9 @@ An initial restricted-network attempt obtained no HTTP responses and is classifi
 | evidence/COVERAGE_EN.md | Shared-case mapping, evidence scope and remaining dependencies. |
 | evidence/DEPLOYMENT_EN.md | Historical and current deployment/persistence evidence. |
 | evidence/publication-read-*.json | Separately dated read-only publication observations. |
+| evidence/RETEST_EN.md | Independent 14-check retest, closure decision and integration handoff. |
+| evidence/p5-001-retest-2026-10-12T16-19-50-547Z.json | Dated post-fix HTTP observations and helper hash. |
+| evidence/retest-provenance-2026-10-13.json | Owner deployment attribution, source baseline and verified CI. |
 
 CI run: https://github.com/GU-CHE/sc6113-escrow-dapp/actions/runs/38214701755
 
