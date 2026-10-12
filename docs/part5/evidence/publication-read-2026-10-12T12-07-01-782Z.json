@@ -1,0 +1,70 @@
+{
+  "startedAtUTC": "2026-10-12T12:07:01.782Z",
+  "completedAtUTC": "2026-10-12T12:07:01.853Z",
+  "origin": "https://sc6113-escrow-dapp.onrender.com",
+  "referenceRevision": "99b4877f868d6811f6ed125379d8bc29e6690204",
+  "node": "v24.19.0",
+  "platform": "win32 10.0.26200",
+  "ethers": "6.15.0",
+  "scope": "Six bounded GET checks. No login, metadata write, restart, deployment or blockchain transaction. Does not establish uptime or exact running backend revision.",
+  "results": [
+    {
+      "id": "P01",
+      "method": "GET",
+      "endpoint": "/health",
+      "timeUTC": "2026-10-12T12:07:01.784Z",
+      "status": "FAIL",
+      "error": "fetch failed",
+      "responseMs": 48
+    },
+    {
+      "id": "P02",
+      "method": "GET",
+      "endpoint": "/api/config",
+      "timeUTC": "2026-10-12T12:07:01.833Z",
+      "status": "FAIL",
+      "error": "fetch failed",
+      "responseMs": 4
+    },
+    {
+      "id": "P03",
+      "method": "GET",
+      "endpoint": "/api/orders",
+      "timeUTC": "2026-10-12T12:07:01.837Z",
+      "status": "FAIL",
+      "error": "fetch failed",
+      "responseMs": 4
+    },
+    {
+      "id": "P04",
+      "method": "GET",
+      "endpoint": "/api/events",
+      "timeUTC": "2026-10-12T12:07:01.841Z",
+      "status": "FAIL",
+      "error": "fetch failed",
+      "responseMs": 4
+    },
+    {
+      "id": "P05",
+      "method": "GET",
+      "endpoint": "/api/content/0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+      "timeUTC": "2026-10-12T12:07:01.845Z",
+      "status": "FAIL",
+      "error": "fetch failed",
+      "responseMs": 4
+    },
+    {
+      "id": "P06",
+      "method": "GET",
+      "endpoint": "/api/content/0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+      "timeUTC": "2026-10-12T12:07:01.849Z",
+      "status": "FAIL",
+      "error": "fetch failed",
+      "responseMs": 3
+    }
+  ],
+  "summary": {
+    "PASS": 0,
+    "FAIL": 6
+  }
+}

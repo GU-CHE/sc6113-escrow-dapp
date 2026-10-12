@@ -1,0 +1,22 @@
+{
+  "id": "P5-001",
+  "status": "OPEN",
+  "proposedSeverity": "P2",
+  "caseId": "E01",
+  "timeUTC": "2026-10-12T11:19:49.206Z",
+  "request": {
+    "method": "GET",
+    "url": "https://sc6113-escrow-dapp.onrender.com/api/orders?before=invalid"
+  },
+  "expected": {
+    "http": 400,
+    "description": "Controlled JSON client error for malformed pagination"
+  },
+  "actual": {
+    "http": 503,
+    "error": "invalid literal for int() with base 10: 'invalid'"
+  },
+  "impact": "Invalid input is reported as service unavailability. Valid normal requests passed. This probe did not mutate records or funds.",
+  "recommendation": "Validate pagination before RPC work; return 400 for invalid input, preserve 503 for upstream failures.",
+  "retest": "Re-run malformed and valid pagination against the deployed fix. No fix or retest is claimed."
+}

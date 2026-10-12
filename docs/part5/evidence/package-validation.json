@@ -1,0 +1,28 @@
+{
+  "validatedAtUTC": "2026-10-12T12:14:28.150542+00:00",
+  "scope": "Part 5 package validation, not a rerun of the application suite.",
+  "originalEvidenceFilesByteIdentical": 7,
+  "originalLiveSummary": {
+    "PASS": 29,
+    "FAIL": 1
+  },
+  "publicationLiveSummary": {
+    "PASS": 6,
+    "FAIL": 0
+  },
+  "localMarkdownLinksChecked": 20,
+  "jsonFilesParsedBeforeThisRecord": 11,
+  "englishAuthoredTextCheck": "PASS",
+  "secretPatternScan": "PASS (targeted patterns; not a security certification)",
+  "helperSyntax": "PASS: node --check on all three .cjs helpers",
+  "unicodeFixtureSemantics": "Original and adapted helper fixture lines identical",
+  "pdf": {
+    "pages": 5,
+    "renderedPagesVisuallyInspected": 5,
+    "result": "PASS"
+  },
+  "scopeAudit": "All new paths confined to docs/part5; no pre-existing tracked file modified.",
+  "applicationLocalPythonSuite": "NOT RUN in this publication; unchanged implementation and existing CI reused.",
+  "transportAttempt": "Initial six fetch failures obtained no HTTP response; application cases NOT RUN. Separate network-enabled run passed.",
+  "defect": "P5-001 OPEN; not fixed or retested."
+}

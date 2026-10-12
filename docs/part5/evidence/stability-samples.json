@@ -1,0 +1,23 @@
+{
+  "scope": "Three bounded health and saved-content reads, 20 seconds apart. Not load testing, a restart, or uptime certification.",
+  "samples": [
+    {
+      "timeUTC": "2026-10-12T11:21:53.279Z",
+      "healthMs": 1125,
+      "contentMs": 333,
+      "status": "PASS"
+    },
+    {
+      "timeUTC": "2026-10-12T11:22:14.745Z",
+      "healthMs": 490,
+      "contentMs": 461,
+      "status": "PASS"
+    },
+    {
+      "timeUTC": "2026-10-12T11:22:35.701Z",
+      "healthMs": 602,
+      "contentMs": 915,
+      "status": "PASS"
+    }
+  ]
+}

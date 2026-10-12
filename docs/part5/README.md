@@ -1,0 +1,65 @@
+# Part 5: Backend and Deployment Acceptance
+
+This contribution covers API authentication, request protection, content integrity, persistence and deployment evidence for the SC6113 group escrow DApp. It is separate from Individual Assignment 2. Application code and other members' documents are unchanged.
+
+## Results and reading order
+
+The original live run on 12 October 2026 at 19:19 Singapore time recorded **29 PASS and one FAIL across 30 checks**. P5-001 remains **OPEN**, proposed P2: malformed pagination returned HTTP 503 instead of the expected controlled HTTP 400. Three later short availability samples passed. New publication observations are separately dated and do not replace these results.
+
+1. [Acceptance report](acceptance/BACKEND_ACCEPTANCE_EN.md) and [PDF](output/pdf/Part5_Backend_Deployment_Acceptance_EN.pdf).
+2. [Coverage and evidence matrix](evidence/COVERAGE_EN.md), including the shared A01-A04 case mapping.
+3. [Deployment and persistence record](evidence/DEPLOYMENT_EN.md).
+4. [Defect handoff](evidence/DEFECT_HANDOFF_EN.md).
+5. [Report integration section](acceptance/REPORT_SECTION_EN.md) and [contribution statement](CONTRIBUTION_EN.md).
+
+The existing team restart is reused with attribution. No new restart, deployment or blockchain transaction was performed for this publication. Public configuration and static-file matches do not establish the exact running backend commit.
+
+## Reproduction
+
+Use Node.js 22 or later from the repository root. The historical live run used Node.js 24.19.0 and the repository's vendored ethers 6.15.0. No npm installation is needed for these helpers.
+
+```sh
+node docs/part5/acceptance/publication_read.cjs
+```
+
+This command performs six bounded GET checks: health, public configuration/ABIs, orders, events and two existing content digests. It saves a dated result in the operating system's temporary directory. Set PART5_OUTPUT_DIR to an empty output directory to keep a run elsewhere. The helper creates a new file and refuses to overwrite one.
+
+```sh
+node docs/part5/acceptance/part5_live.cjs --verify-digest 0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c
+```
+
+This verifies a normal content read. It proves a new restart only when accompanied by a separately recorded operator restart event. `part5_stability.cjs` optionally takes three health/content samples 20 seconds apart; it does not establish long-term uptime.
+
+The full historical live test is retained for a necessary future rerun:
+
+```sh
+node docs/part5/acceptance/part5_live.cjs --live-write
+```
+
+Unlike the default read-only helper, this explicitly selected mode signs in with an ephemeral unfunded account and creates one public QA metadata record. Use it only when a changed implementation or uncovered requirement justifies a new write. It sends no blockchain transaction. Keys, authentication material and cookies remain in memory. New outputs go to a fresh temporary directory by default; original evidence is never overwritten. A failing case gives a nonzero exit code, including the currently open pagination defect.
+
+The adapted helpers use the checkout's current deployment configuration and vendored library. Their new execution records identify the checked-out revision. They do not retroactively describe the exact script bytes used for the historical run.
+
+## PDF and evidence maintenance
+
+The PDF is generated from the acceptance Markdown with Python, ReportLab and pypdf:
+
+```sh
+python docs/part5/acceptance/build_report.py
+```
+
+Render and inspect the generated pages after content changes. These are document-generation dependencies, not additions to the application's requirements.
+
+[Original evidence manifest](evidence/original-evidence-manifest.json) records the byte lengths and SHA-256 hashes of seven preserved files. [File manifest](evidence/file-manifest.json) inventories the published payload, excluding itself. [Repository baseline](evidence/repository-baseline.json) records the source revision, clean isolated checkout and unchanged reference blobs.
+
+Shared repository source, vendor assets and historical deployment files are linked rather than copied. The earlier portable ZIP is not the GitHub payload.
+
+The scoped `.gitattributes` disables line-ending conversion only within this Part 5 directory, preserving evidence and manifest byte hashes across platforms.
+
+## Boundaries and remaining inputs
+
+Member 1 owns implementation fixes, Render operations and current deployment confirmation. Part 5 owns defect reproduction and retesting. Member 6 integrates the report and shared defect register. No reviewer request or teammate message is sent by this contribution.
+
+Current private Render deployment details and database settings remain NOT VERIFIED. The documented shared PostgreSQL schema provides naming separation, not independent credentials or infrastructure. No shared database resources were changed.
+
+The main acceptance documents retain older pending-business-test statements; the current open [PR #1](https://github.com/GU-CHE/sc6113-escrow-dapp/pull/1) contains newer Member 2 results. This contribution leaves both unchanged. Gas optimization F8, contract permissions and frontend/device acceptance are outside Part 5's completion claim.

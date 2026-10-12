@@ -1,0 +1,40 @@
+{
+  "purpose": "Byte-for-byte preservation of the prior Part 5 evidence. Original timestamps remain inside the files.",
+  "files": [
+    {
+      "path": "evidence/live-results.json",
+      "sha256": "69716d1ff4ae07f74d37fb1d434bcd8444dd2ac7bdb6247786817abfe1e8117e",
+      "bytes": 11719
+    },
+    {
+      "path": "evidence/stability-samples.json",
+      "sha256": "58ef7688b23b4622a5b86ab75597fdf927baf8e933d4806c3bdb119a8ce8dd5c",
+      "bytes": 538
+    },
+    {
+      "path": "evidence/ci-verification.json",
+      "sha256": "625e5d51dccae57b4c00e7763d837ec82ed5ef93d79f20a962ca4166bdb43c4e",
+      "bytes": 240
+    },
+    {
+      "path": "evidence/defects.json",
+      "sha256": "c3e5adda50d4c0a9cc3ddfbe8ff72c8a0a838f5663ff7832d5b723742c50bf79",
+      "bytes": 839
+    },
+    {
+      "path": "evidence/provenance.json",
+      "sha256": "f9ee5d42dc11a6ee4b579e3d2c34efa624ed7c9ae39bfe3a7195c0a5036cfcfb",
+      "bytes": 634
+    },
+    {
+      "path": "evidence/local-python-attempt_EN.txt",
+      "sha256": "299d98297cee130ddec590d8e1db8bc45bccb7075c253a4e6f0abf9d77f4432b",
+      "bytes": 1359
+    },
+    {
+      "path": "evidence/requirements-attempted-python.txt",
+      "sha256": "406b4186eb7354b76cd77d9072287393478b56a5712fcb2f3a6c68c3b7be7e10",
+      "bytes": 999
+    }
+  ]
+}

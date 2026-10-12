@@ -1,0 +1,104 @@
+{
+  "startedAtUTC": "2026-10-12T12:07:16.208Z",
+  "completedAtUTC": "2026-10-12T12:07:53.838Z",
+  "origin": "https://sc6113-escrow-dapp.onrender.com",
+  "referenceRevision": "99b4877f868d6811f6ed125379d8bc29e6690204",
+  "node": "v24.19.0",
+  "platform": "win32 10.0.26200",
+  "ethers": "6.15.0",
+  "scope": "Six bounded GET checks. No login, metadata write, restart, deployment or blockchain transaction. Does not establish uptime or exact running backend revision.",
+  "results": [
+    {
+      "id": "P01",
+      "method": "GET",
+      "endpoint": "/health",
+      "timeUTC": "2026-10-12T12:07:16.210Z",
+      "http": 200,
+      "responseMs": 31677,
+      "observed": {
+        "contractsConfigured": true,
+        "status": "ok"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "P02",
+      "method": "GET",
+      "endpoint": "/api/config",
+      "timeUTC": "2026-10-12T12:07:47.902Z",
+      "http": 200,
+      "responseMs": 570,
+      "observed": {
+        "chainId": 11155111,
+        "addresses": {
+          "DisputeResolver": "0xA0B660Bb047a7Bebc461630D4c7B3F3072EC25a8",
+          "EscrowOrders": "0xf56A0BDED64dA25261FE4DAd31a72D521ED0680B",
+          "RoleRegistry": "0x301B9E840e8FCf727c4b31c9AF75477D64FD4810"
+        },
+        "abisMatchReference": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "P03",
+      "method": "GET",
+      "endpoint": "/api/orders",
+      "timeUTC": "2026-10-12T12:07:48.496Z",
+      "http": 200,
+      "responseMs": 4134,
+      "observed": {
+        "orderCount": 8,
+        "returnedOrders": 8,
+        "lockedWei": "1000000000000000",
+        "claimableWei": "0"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "P04",
+      "method": "GET",
+      "endpoint": "/api/events",
+      "timeUTC": "2026-10-12T12:07:52.632Z",
+      "http": 200,
+      "responseMs": 639,
+      "observed": {
+        "eventsCount": 13,
+        "fromBlock": 11897790,
+        "toBlock": 11898789
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "P05",
+      "method": "GET",
+      "endpoint": "/api/content/0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+      "timeUTC": "2026-10-12T12:07:53.277Z",
+      "http": 200,
+      "responseMs": 269,
+      "observed": {
+        "digest": "0x064677800197721a97440bcca0e89acd5efc1a7dce2783ac732395f670064c3c",
+        "canonicalKeccakVerified": true,
+        "documentMatchesCanonical": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "P06",
+      "method": "GET",
+      "endpoint": "/api/content/0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+      "timeUTC": "2026-10-12T12:07:53.553Z",
+      "http": 200,
+      "responseMs": 282,
+      "observed": {
+        "digest": "0xc2380eb31e0e845572b21e4460ffd7143966bcf5c702b1c3e158f4bef4f6602f",
+        "canonicalKeccakVerified": true,
+        "documentMatchesCanonical": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "PASS": 6,
+    "FAIL": 0
+  }
+}
