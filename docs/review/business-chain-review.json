@@ -1,0 +1,826 @@
+{
+  "timeUTC": "2026-10-12T15:08:17.418053+00:00",
+  "reviewedPRHead": "a696eaaec2f5be4de45725c180bf558e04f47deb",
+  "checkedBlock": 11899689,
+  "transactionsVerified": 32,
+  "B01GasUsed": 2059551,
+  "orderStates": {
+    "1": "Refunded",
+    "2": "Cancelled",
+    "3": "Cancelled",
+    "4": "Released",
+    "5": "Refunded",
+    "6": "Released"
+  },
+  "currentCreditsWei": {
+    "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376": "0",
+    "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133": "0"
+  },
+  "withdrawals": [
+    {
+      "contract": "EscrowOrders",
+      "event": "Withdrawal",
+      "args": {
+        "account": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+        "amount": 1000000000000000
+      }
+    },
+    {
+      "contract": "EscrowOrders",
+      "event": "Withdrawal",
+      "args": {
+        "account": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+        "amount": 2000000000000000
+      }
+    },
+    {
+      "contract": "EscrowOrders",
+      "event": "Withdrawal",
+      "args": {
+        "account": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+        "amount": 1000000000000000
+      }
+    }
+  ],
+  "currentAccounting": {
+    "lockedWei": "1000000000000000",
+    "claimableWei": "0",
+    "balanceWei": "1000000000000000"
+  },
+  "transactions": [
+    {
+      "case": "B00",
+      "order": "\u2014",
+      "operation": "register",
+      "gasDocumented": 306843,
+      "txHash": "0xb39c4d4eefb87d84e4d778bf957bc286c6709c1e7fdcd88386ed53ad0d5a4e25",
+      "block": 11897359,
+      "status": 1,
+      "gasActual": 306843,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "RoleRegistry",
+          "event": "RoleRegistered",
+          "args": {
+            "account": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "role": 1
+          }
+        }
+      ]
+    },
+    {
+      "case": "B00",
+      "order": "\u2014",
+      "operation": "register",
+      "gasDocumented": 306892,
+      "txHash": "0x47604ad2aedf21261ceb97f295817230b25b4bb5cd4540a955069fa461d5aa9f",
+      "block": 11897366,
+      "status": 1,
+      "gasActual": 306892,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "RoleRegistry",
+          "event": "RoleRegistered",
+          "args": {
+            "account": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "role": 2
+          }
+        }
+      ]
+    },
+    {
+      "case": "B03",
+      "order": "#1",
+      "operation": "createOrder",
+      "gasDocumented": 873794,
+      "txHash": "0x229b9db2fa087e444f6579bcf7b95f0a91c8b17cf5903362322c66dd6cf4d58a",
+      "block": 11897375,
+      "status": 1,
+      "gasActual": 873794,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderCreated",
+          "args": {
+            "orderId": 1,
+            "customer": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "provider": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "amount": 1000000000000000,
+            "deadline": 1791877080,
+            "termsHash": "0x4ecdf648743836fda8f20120e20fe5b45379d1fa9100a45ddadcf1bfedd299b9"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B03",
+      "order": "#1",
+      "operation": "acceptOrder",
+      "gasDocumented": 223368,
+      "txHash": "0x42dc55b4e71240aa60de8a567e46943c47a5cc9593a2ea6d07130921a8af781c",
+      "block": 11897383,
+      "status": 1,
+      "gasActual": 223368,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 1,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "state": 1,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B03",
+      "order": "#1",
+      "operation": "fundOrder",
+      "gasDocumented": 160292,
+      "txHash": "0x8ff295881ed870c375b7e09bbb320bcb81fe82fa7b90526a291fd71a10f521fb",
+      "block": 11897388,
+      "status": 1,
+      "gasActual": 160292,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 1,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 2,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B02a",
+      "order": "#2",
+      "operation": "createOrder",
+      "gasDocumented": 775886,
+      "txHash": "0x3d2f3f2536e341b8574b75bf87484e6c8c368f0ef7cdbbe794b4aec12f857db7",
+      "block": 11897395,
+      "status": 1,
+      "gasActual": 775886,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderCreated",
+          "args": {
+            "orderId": 2,
+            "customer": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "provider": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "amount": 1000000000000000,
+            "deadline": 1791876780,
+            "termsHash": "0xd01a958b845f3f73242250a54174e4029c37a58b289be4ee673530c6430e80f3"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B02b",
+      "order": "#3",
+      "operation": "createOrder",
+      "gasDocumented": 775874,
+      "txHash": "0x24f86c614cc5ffd679183ba7296b27055b7a04cc47bccbb5708c9c3f549729d9",
+      "block": 11897400,
+      "status": 1,
+      "gasActual": 775874,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderCreated",
+          "args": {
+            "orderId": 3,
+            "customer": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "provider": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "amount": 1000000000000000,
+            "deadline": 1791880080,
+            "termsHash": "0x6b200dc08b1a38ee2c8e2642cf442637eabe108fbfe752c329bbe4fe6c506153"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B02a",
+      "order": "#2",
+      "operation": "cancelOrder",
+      "gasDocumented": 223271,
+      "txHash": "0xbd44ab71aadd7ede3fb48cbfb0c741f3f6a42c09a194fa4b89136a9779117c9d",
+      "block": 11897402,
+      "status": 1,
+      "gasActual": 223271,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 2,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 7,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B02b",
+      "order": "#3",
+      "operation": "acceptOrder",
+      "gasDocumented": 223356,
+      "txHash": "0x36fd8c70d72d5c2ffda758612222302f5837019814575af63c1531dff54cfdb4",
+      "block": 11897410,
+      "status": 1,
+      "gasActual": 223356,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 3,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "state": 1,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B02b",
+      "order": "#3",
+      "operation": "cancelOrder",
+      "gasDocumented": 223425,
+      "txHash": "0x07aa09d42f95f25b559667ff938474cb02275c5a230660098432a783f9a07a46",
+      "block": 11897417,
+      "status": 1,
+      "gasActual": 223425,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 3,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 7,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B01",
+      "order": "#4",
+      "operation": "createOrder",
+      "gasDocumented": 775874,
+      "txHash": "0xb273a9b86405808090a5aa35853b6a7d8c556b16db4daa8502511826a43db4cd",
+      "block": 11897438,
+      "status": 1,
+      "gasActual": 775874,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderCreated",
+          "args": {
+            "orderId": 4,
+            "customer": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "provider": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "amount": 1000000000000000,
+            "deadline": 1791876960,
+            "termsHash": "0x67afa0ef08989d3f1e6ee46f1f35cdc705d01a599188dbb585104900c24f119d"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B01",
+      "order": "#4",
+      "operation": "acceptOrder",
+      "gasDocumented": 223368,
+      "txHash": "0x92c5d10db2e1da3e9673b743d4120dd3eed52070fe97af907ef94bf96b70faef",
+      "block": 11897445,
+      "status": 1,
+      "gasActual": 223368,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 4,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "state": 1,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B01",
+      "order": "#4",
+      "operation": "fundOrder",
+      "gasDocumented": 62372,
+      "txHash": "0xfde72d2940bc5617aa51fd3688ae4de9951faaee9c3d761cb2396e93084f5546",
+      "block": 11897451,
+      "status": 1,
+      "gasActual": 62372,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 4,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 2,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B01",
+      "order": "#4",
+      "operation": "submitDelivery",
+      "gasDocumented": 331817,
+      "txHash": "0x339cd0cba04bdcf06d5b8211a5c6b1d47d0235fb99ecad6fe54be4319c7aa09b",
+      "block": 11897458,
+      "status": 1,
+      "gasActual": 331817,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 4,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "state": 3,
+            "referenceHash": "0xc9f038669f14d7592901915592068ee3df477381de6e197269b0504c2184b863"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B01",
+      "order": "#4",
+      "operation": "approveDelivery",
+      "gasDocumented": 456709,
+      "txHash": "0x0104a805d2c8100f6f1c596b2873b014f279a31c402e3274a95324e5cee4449b",
+      "block": 11897463,
+      "status": 1,
+      "gasActual": 456709,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 4,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 5,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B05",
+      "order": "#5",
+      "operation": "createOrder",
+      "gasDocumented": 775874,
+      "txHash": "0xb7376782164b0f6b64a91931a493a9ec32a400beaf152f09c2d138e7b02a1f35",
+      "block": 11897477,
+      "status": 1,
+      "gasActual": 775874,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderCreated",
+          "args": {
+            "orderId": 5,
+            "customer": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "provider": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "amount": 1000000000000000,
+            "deadline": 1791791220,
+            "termsHash": "0xd545d6798e6a2893ecd4a7be570dd7f838ffc50609a4d58fce39fbffaa6171d3"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B05",
+      "order": "#5",
+      "operation": "acceptOrder",
+      "gasDocumented": 223368,
+      "txHash": "0x941ebc8abb230a2df4657e7e007926464b6c32fa87bbe511c1dd28c97f6aaead",
+      "block": 11897480,
+      "status": 1,
+      "gasActual": 223368,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 5,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "state": 1,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B05",
+      "order": "#5",
+      "operation": "fundOrder",
+      "gasDocumented": 62372,
+      "txHash": "0xe3ebec381cea6cb241ed2946d4b03f61ff3f77e19f916186dc7a99a1ad10e2cf",
+      "block": 11897484,
+      "status": 1,
+      "gasActual": 62372,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 5,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 2,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B01",
+      "order": "\u2014",
+      "operation": "withdraw",
+      "gasDocumented": 209411,
+      "txHash": "0x1a0809dbe741a4b8f36e593469957b64710898601e60edd11f002d3daa089178",
+      "block": 11897535,
+      "status": 1,
+      "gasActual": 209411,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "Withdrawal",
+          "args": {
+            "account": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "amount": 1000000000000000
+          }
+        }
+      ]
+    },
+    {
+      "case": "B04",
+      "order": "#6",
+      "operation": "createOrder",
+      "gasDocumented": 775874,
+      "txHash": "0x3df7b500a2e1a51dddbdfd008feb1c8921e39dd4919e9dbc6b92ff6bba71efe4",
+      "block": 11897547,
+      "status": 1,
+      "gasActual": 775874,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderCreated",
+          "args": {
+            "orderId": 6,
+            "customer": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "provider": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "amount": 1000000000000000,
+            "deadline": 1791878280,
+            "termsHash": "0xe875acdd829bcc69697c8f512a88f719f8bbbfa1f49262044d5a6aaaf2b43b58"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B04",
+      "order": "#6",
+      "operation": "acceptOrder",
+      "gasDocumented": 223368,
+      "txHash": "0x3f2aefb1d4c4d402776e16b32c7bf48cabff7dbbb15a54dac35c9c04a047f3ee",
+      "block": 11897552,
+      "status": 1,
+      "gasActual": 223368,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 6,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "state": 1,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B04",
+      "order": "#6",
+      "operation": "fundOrder",
+      "gasDocumented": 62372,
+      "txHash": "0xa01276cdf7f0c6e0fbb4fc84a498c153d47d65a262dfbdb62b4aa02c9bbc9651",
+      "block": 11897556,
+      "status": 1,
+      "gasActual": 62372,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 6,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 2,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B04",
+      "order": "#6",
+      "operation": "submitDelivery",
+      "gasDocumented": 331817,
+      "txHash": "0xae6b221a4cc5e396444882c0c539246127a951011cbd67911482426bd19458a2",
+      "block": 11897562,
+      "status": 1,
+      "gasActual": 331817,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 6,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "state": 3,
+            "referenceHash": "0xc9f038669f14d7592901915592068ee3df477381de6e197269b0504c2184b863"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B04",
+      "order": "#6",
+      "operation": "openDispute",
+      "gasDocumented": 454729,
+      "txHash": "0xe06d41704262cf3c5ac4cb980c16b0ad9c601bb09f8b01af22bb9a93dd115565",
+      "block": 11897566,
+      "status": 1,
+      "gasActual": 454729,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 6,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "state": 4,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "contract": "DisputeResolver",
+          "event": "DisputeOpened",
+          "args": {
+            "orderId": 6,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "reasonHash": "0x25cd2413c99e8b18b39c0bed80a3d3b48ceab45617b0aa2dfceaafb808426450"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B03",
+      "order": "#1",
+      "operation": "openDispute",
+      "gasDocumented": 454419,
+      "txHash": "0x565b5d2672a089819985ed78b2c64078bb46777bb470657d005c18f6cd80d7a9",
+      "block": 11897570,
+      "status": 1,
+      "gasActual": 454419,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 1,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 4,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "contract": "DisputeResolver",
+          "event": "DisputeOpened",
+          "args": {
+            "orderId": 1,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "reasonHash": "0x872bde7b25fed950b0dcfe5da1fa5405d5e074f82bbf2058aee0bd5073318893"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B04",
+      "order": "#6",
+      "operation": "addEvidence",
+      "gasDocumented": 223686,
+      "txHash": "0xc4d9665428fa9f40568e64c608cf5c93105c8557cff97a5231f61af0bd8d8837",
+      "block": 11897573,
+      "status": 1,
+      "gasActual": 223686,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "DisputeResolver",
+          "event": "EvidenceAdded",
+          "args": {
+            "orderId": 6,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "evidenceHash": "0x1ed8ef8530f520da6750f762d0cee151a5b50881b4f3fdf648ea0334be2eaeef"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B03",
+      "order": "#1",
+      "operation": "addEvidence",
+      "gasDocumented": 223753,
+      "txHash": "0xc62a45acacf5d004e2c311fd13bb53855c7fed37d8718114457d6feb84ce97e9",
+      "block": 11897579,
+      "status": 1,
+      "gasActual": 223753,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "DisputeResolver",
+          "event": "EvidenceAdded",
+          "args": {
+            "orderId": 1,
+            "actor": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "evidenceHash": "0x90de70acc902449965e1a2d31a7a184e912706914f91aba5a21ba24e5bed6b5b"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B03",
+      "order": "#1",
+      "operation": "resolve",
+      "gasDocumented": 582132,
+      "txHash": "0xb860fae2717150a1a631385c0a2ac503da1b082b7d4797ae22d0e1a1086e2dd2",
+      "block": 11897891,
+      "status": 1,
+      "gasActual": 582132,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 1,
+            "actor": "0xc738E8Ec4d828679e953A47D996f177bDe5C9D36",
+            "state": 6,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "contract": "DisputeResolver",
+          "event": "DisputeResolved",
+          "args": {
+            "orderId": 1,
+            "admin": "0xc738E8Ec4d828679e953A47D996f177bDe5C9D36",
+            "payProvider": false,
+            "rulingHash": "0xe41435328ef664978fd6cb270b4aa6398d27d477da991dcdd034daf3a61bb6eb"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B04",
+      "order": "#6",
+      "operation": "resolve",
+      "gasDocumented": 484210,
+      "txHash": "0x9d7f817f6aadddf73b4767552bb0c4e9aea38f8504eb77f3b7ea0d15fc71b432",
+      "block": 11897895,
+      "status": 1,
+      "gasActual": 484210,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 6,
+            "actor": "0xc738E8Ec4d828679e953A47D996f177bDe5C9D36",
+            "state": 5,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "contract": "DisputeResolver",
+          "event": "DisputeResolved",
+          "args": {
+            "orderId": 6,
+            "admin": "0xc738E8Ec4d828679e953A47D996f177bDe5C9D36",
+            "payProvider": true,
+            "rulingHash": "0xe41435328ef664978fd6cb270b4aa6398d27d477da991dcdd034daf3a61bb6eb"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B05",
+      "order": "#5",
+      "operation": "refundExpired",
+      "gasDocumented": 260991,
+      "txHash": "0x285b5cadc9cadb36075a82ee8bac10cc0dfecdf8485c2b19faf24b0bee07b250",
+      "block": 11897932,
+      "status": 1,
+      "gasActual": 260991,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "OrderAction",
+          "args": {
+            "orderId": 5,
+            "actor": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "state": 6,
+            "referenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "case": "B03+B05",
+      "order": "\u2014",
+      "operation": "withdraw",
+      "gasDocumented": 221015,
+      "txHash": "0xd238578d2d97962a6ead0d31afa0ce76786d980e3d7519f5f01dedac82b53009",
+      "block": 11897935,
+      "status": 1,
+      "gasActual": 221015,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "Withdrawal",
+          "args": {
+            "account": "0xD496b7208893ae3867F72Ae4ACe97e146b9C1376",
+            "amount": 2000000000000000
+          }
+        }
+      ]
+    },
+    {
+      "case": "B04",
+      "order": "\u2014",
+      "operation": "withdraw",
+      "gasDocumented": 209411,
+      "txHash": "0x187ba7bd80e680d6274b661f96eb95418513c4b38e03e95944aa95c9193effe6",
+      "block": 11897940,
+      "status": 1,
+      "gasActual": 209411,
+      "gasMatches": true,
+      "events": [
+        {
+          "contract": "EscrowOrders",
+          "event": "Withdrawal",
+          "args": {
+            "account": "0x281DA0f53fbC2E195069d47f83C4894a9Ec2C133",
+            "amount": 1000000000000000
+          }
+        }
+      ]
+    }
+  ]
+}

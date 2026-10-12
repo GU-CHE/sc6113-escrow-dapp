@@ -71,7 +71,7 @@ See [acceptance plan](docs/ACCEPTANCE.md), [architecture](docs/ARCHITECTURE.md),
 - `GET /api/auth/me`, `POST /api/auth/logout`.
 - `POST /api/content`: `{kind,title,description}` → server-canonicalized JSON and Keccak digest. Requires signed login, exact Origin and CSRF header.
 - `GET /api/content/<digest>`: public immutable metadata; browser verifies its hash.
-- `GET /api/orders?before=<id>`: up to 50 chain-derived orders, descending, with a next-page cursor and global totals.
+- `GET /api/orders?before=<id>`: up to 50 chain-derived orders, descending, with an exclusive next-page cursor and global totals. `before` must be a single positive uint256 integer; invalid cursors return HTTP 400 before RPC access, while chain/RPC unavailability returns HTTP 503.
 - `GET /api/events`: latest 100 decoded events within the latest 1,000 blocks, bounded to avoid unbounded RPC work. Older transactions remain on the explorer.
 
 ## Security and scope

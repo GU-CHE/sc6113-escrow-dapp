@@ -1,6 +1,6 @@
 # Acceptance checklist
 
-Status date: 2026-10-12. Render interface and cloud database are deployed and checked. Three Sepolia contracts and resolver binding were deployed by the user; all four receipts, bytecodes and bindings were verified (`SEPOLIA_VERIFICATION.json`). Real-wallet business transactions and physical-device checks are pending. Local automated results apply to their tested environment.
+Status date: 2026-10-12. Render interface and cloud database are deployed and checked. Three Sepolia contracts and resolver binding were deployed by the user; all four receipts, bytecodes and bindings were verified (`SEPOLIA_VERIFICATION.json`). B00–B05 real-wallet business scenarios passed; see `BUSINESS_ACCEPTANCE_ZH.md`. Physical-device and independent rejection/switching checks remain pending. Local automated results apply to their tested environment.
 
 ## Team roles
 
@@ -15,11 +15,11 @@ Status date: 2026-10-12. Render interface and cloud database are deployed and ch
 
 | ID | Scenario | Expected result | Environment / evidence |
 |---|---|---|---|
-| B01 | Create → accept → fund → deliver → approve → withdraw | Correct states and exact payout; no double withdrawal | Automated local; repeat on Sepolia |
-| B02 | Unfunded cancellation | Acceptance/funding blocked afterwards | Automated local; browser pending |
-| B03 | Dispute and refund customer | Admin ruling creates only customer credit | Automated local; browser pending |
-| B04 | Dispute and pay provider | Admin ruling creates only provider credit | Automated local; browser pending |
-| B05 | Funded but overdue, no delivery | Customer refund allowed only after deadline | Automated local |
+| B01 | Create → accept → fund → deliver → approve → withdraw | Correct states and exact payout; no double withdrawal | Passed local and Sepolia B01 (#4), screenshots + receipts |
+| B02 | Unfunded cancellation | Acceptance/funding blocked afterwards | Passed local and Sepolia; see business evidence |
+| B03 | Dispute and refund customer | Admin ruling creates only customer credit | Passed local and Sepolia; see business evidence |
+| B04 | Dispute and pay provider | Admin ruling creates only provider credit | Passed local and Sepolia; see business evidence |
+| B05 | Funded but overdue, no delivery | Customer refund allowed only after deadline | Passed local and Sepolia B05 (#5) |
 | S01 | Stranger performs participant operations | Revert without state/credit change | Automated local |
 | S02 | Self-register admin, re-register, rebind resolver | All rejected | Automated local |
 | S03 | Wrong funding amount, repeated funding and payout | All rejected | Automated local |
@@ -30,8 +30,8 @@ Status date: 2026-10-12. Render interface and cloud database are deployed and ch
 | A04 | Database persists across service restart | Metadata remains available | Passed on Render / PostgreSQL, 2026-10-12 |
 | W01 | MetaMask rejection and wrong network | Clear error, no false successful state | Real MetaMask: pending |
 | W02 | Account/network switch and session expiry | Actions require correct reconnection | Real MetaMask: pending |
-| W03 | Gas estimate and receipt | Review before signing; confirmed state only after receipt | Real MetaMask: pending |
-| D01 | Desktop complete lifecycle on Render | All primary actions work online | Pending |
+| W03 | Gas estimate and receipt | Review before signing; confirmed state only after receipt | F7 display + receipts checked; same-transaction estimate comparison pending |
+| D01 | Desktop complete lifecycle on Render | All primary actions work online | Passed, B01–B05 real MetaMask; independent switching checks pending |
 | D02 | Phone ordinary browser | Layout, scrolling, list/detail readable | Physical phone: pending |
 | D03 | Phone MetaMask browser | Connect, execute critical transaction, see confirmed result | Physical phone: pending |
 

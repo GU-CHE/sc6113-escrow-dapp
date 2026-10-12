@@ -2,7 +2,7 @@
 
 起草：2026-10-12。依据：老师任务书 `SC6113 Group Project.docx`、小组《要求与验收计划》、[ACCEPTANCE.md](ACCEPTANCE.md)、[HANDOVER_ZH.md](HANDOVER_ZH.md) 和当前代码（commit `2f6a01b`）。
 
-> 合约已于 2026-10-12 部署到 Sepolia 并通过核验（地址见 2.2，部署记录见 `SEPOLIA_VERIFICATION.json`）。同日在线上版本用真实 MetaMask 完成了第 3 节全部用例，**B00–B05 全部通过**，31 笔交易和对账结果见第 6 节，测试截图在 [`acceptance-screenshots/`](acceptance-screenshots/)（索引见 6.6）。本地链测试不算公开测试网证据。
+> 合约已于 2026-10-12 部署到 Sepolia 并通过核验（地址见 2.2，部署记录见 `SEPOLIA_VERIFICATION.json`）。同日在线上版本用真实 MetaMask 完成了第 3 节全部用例，**B00–B05 全部通过**，32 笔交易和对账结果见第 6 节，测试截图在 [`acceptance-screenshots/`](acceptance-screenshots/)（索引见 6.6）。本地链测试不算公开测试网证据。
 
 第 3 节的 B01–B05 与 `ACCEPTANCE.md` 中的同名用例一一对应，这里补充成可以照着操作的步骤和记录表。
 
@@ -76,7 +76,7 @@
 
 | 日期时间（SGT） | 浏览器及版本 | MetaMask 版本 | Render 上线 commit |
 |---|---|---|---|
-| 2026-10-12 15:21–17:18 | Microsoft Edge 154.0.4258.62 | 13.48.0 | `85a86ba` 或 `99b4877`，两者运行代码相同（合约地址由 85a86ba 写入，99b4877 只改了测试和文档） |
+| 2026-10-12 15:21–17:18 | Microsoft Edge 154.0.4258.62 | 13.48.0 | Render 部署提交 `85a86ba`；仓库验收基线为 `99b4877`，后者只改了测试和文档，运行代码相同 |
 
 合约地址（2026-10-12 部署，起始区块 11897155，已用公开节点核验）：
 
@@ -218,7 +218,7 @@
 
 ## 6 执行结果（Sepolia，2026-10-12）
 
-执行人：成员 2。环境：线上版本 https://sc6113-escrow-dapp.onrender.com，Microsoft Edge + MetaMask（版本见 2.2）。客户 C 为 `0xD496…1376`，服务方 P 为 `0x281D…C133`，管理员 A（组长）为 `0xc738…9D36`，负责两次裁决。下列数据于当天 17:20 前后用公开 Sepolia 节点逐笔核对，31 笔交易全部成功。
+执行人：成员 2。环境：线上版本 https://sc6113-escrow-dapp.onrender.com，Microsoft Edge + MetaMask（版本见 2.2）。客户 C 为 `0xD496…1376`，服务方 P 为 `0x281D…C133`，管理员 A（组长）为 `0xc738…9D36`，负责两次裁决。下列数据于当天 17:20 前后用公开 Sepolia 节点逐笔核对，32 笔交易全部成功。
 
 ### 6.1 场景结果
 
@@ -303,9 +303,9 @@
 | `withdraw` | 209,411 | 49,872 | 4.2× |
 
 - `fundOrder` 是唯一直接调用合约的交易，gas 和本地基本一样，说明合约逻辑本身的开销没有变化。
-- 其他交易都经 MetaMask 智能账户转发。`acceptOrder` 和 `cancelOrder` 都只修改已有的存储位，两者都比本地正好多出 180,566 gas，可以看作每笔转发的固定开销。
+- 其他交易都经 MetaMask 智能账户转发。`acceptOrder` 和 `cancelOrder` 都只修改已有的存储位，两者都比本地正好多出 180,566 gas，这是两个样本中观察到的相同差值，不能据此认定所有转发交易都有固定开销。
 - 写入新存储位的交易会额外更贵：第一次入金要把 `lockedTotal` 从 0 写成非 0，用了 160,292，之后同样的入金只要 62,372。
-- B01 完整流程共 2,059,551 gas。按 2026-10-12 主网 gas 价格 0.06 gwei、ETH 2,544 美元计算约 0.31 美元；按 1 gwei 计算约 5.24 美元。
+- B01 完整流程共 2,059,551 gas。假设主网 gas 价格为 0.06 gwei、ETH 为 2,544 美元，折算约 0.31 美元；假设 1 gwei 则约 5.24 美元。这是敏感性情景，不是 Sepolia 实际美元支出；原始价格响应未归档，也不包含部署、注册、仲裁、法币兑换和托管服务费用。
 - 建议负责 gas 分析的成员把“合约本身的开销”和“钱包转发的开销”分开讨论；需要更贴近合约本身的数据时，可以用没有升级为智能账户的普通账户重测。
 
 **签名前估算与实测（F7）**：审核弹窗的 `Estimated gas units` 来自 `estimateGas`，`Estimated fee ceiling` 按估算值加 20% 计算（[截图](acceptance-screenshots/F7-createOrder-gas-estimate.webp)：2026-10-12 对一笔新的 `createOrder` 估算后点了 Cancel，没有发交易）。实际 gas limit 和用量由公开节点读取。
@@ -315,16 +315,16 @@
 | `fundOrder`（B01） | 63,202（由 gas limit 反推） | 75,842 | 75,842 | 62,372 | 直接调用 EscrowOrders |
 | `createOrder`（估算取自 F7 截图，实际取自 B01） | 602,201 | 722,641 | 883,670 | 775,874 | 经 MetaMask `DelegationManager` 转发 |
 
-- 直接调用时估算准确：只比实际多 1.3%，MetaMask 原样使用了应用给的 gas limit。
-- 经智能账户转发时，估算只覆盖合约本身：实际用量比估算多 173,673（+29%），也超过了应用加 20% 后的上限（+7.4%）。MetaMask 会自己重新估算，把 gas limit 设为 883,670，所以交易没有失败；但弹窗里的 “fee ceiling” 对这类账户偏低，最终费用以 MetaMask 确认页为准（弹窗中也有这句提示）。
-- 多出的 173,673 与上面测得的每笔转发开销 180,566 基本吻合，估算值本身比合约实际用量高约 1%。
-- 改进方向：检测到 EIP-7702 委托账户时，在弹窗中提示“钱包转发约另加 18 万 gas”，或把这一项改称“合约执行估算”。
+- `fundOrder` 的 63,202 是由已记录 gas limit 反推的近似值；与实际 62,372 相差约 1.3%，不是独立保存的签名前估算截图。
+- `createOrder` 的截图属于取消的新订单，实测属于此前 B01；这是跨样本的说明性对比，不能作为同一交易的估算误差实验，也不能证明某次交易必然低估 29%。
+- 该对比提示智能账户转发可能使最终钱包交易费用高于应用的合约调用估算。固定另加 18 万 gas 的规则未经验证；应以钱包最终确认页为准，并在后续同一交易实验中同时记录估算、钱包 gas limit 和 receipt。
+- F7 的估算展示已验收；F8 优化前后对照仍需负责成员补充，不能用这张表代替优化实验。
 
 ### 6.5 执行中发现的问题（可写进报告的局限与改进）
 
 - **截止时间默认是 24 小时后**：B05 第一次尝试忘了修改，订单当天无法超期退款。可以在表单上加提示，或在测试步骤里专门提醒。
 - **事件窗口约 3.3 小时**：注册记录大约 18:40 起、争议记录大约 19:20 起会从网页上消失，链上数据仍在。#1、#6 的争议详情已提前截图（见 6.6）。
-- **智能账户下费用上限偏低**：审核弹窗的 fee ceiling 没有包含 MetaMask 的转发开销，见 6.4 的 F7 对比。
+- **智能账户费用提示需进一步验证**：跨样本对比提示应用估算可能未覆盖最终钱包转发成本，见 6.4；尚未做同一交易的完整前后记录。
 - **全局数字含其他组员的订单**：订单总数、托管金额和待提现金额包括 #7、#8，对账要按订单和账户逐项核对。
 - **记录文字过于简单**：测试中写的 “aa”“test” 等只适合测试，正式演示应改用贴近真实业务的描述。
 
@@ -359,3 +359,7 @@
 | [B05-5-refund-button-order5](acceptance-screenshots/B05-5-refund-button-order5.jpg) | B05 · 5 | C | 截止后出现 `Refund overdue order` |
 | [B05-5-no-submit-order5](acceptance-screenshots/B05-5-no-submit-order5.jpg) | B05 · 5 | P | 截止后 P 没有 `Submit delivery` |
 | [F7-createOrder-gas-estimate](acceptance-screenshots/F7-createOrder-gas-estimate.webp) | F7 | C | 签名前审核弹窗：估算 602,201 gas，费用上限约 0.00072 ETH |
+
+## 7 集成审查补充（2026-10-12）
+
+32 笔交易 receipt、gas、事件及当前订单状态已由开发负责人通过只读 RPC 独立复核，证据见 [`review/business-chain-review.json`](review/business-chain-review.json)，解释和最终报告待修订项见 [`review/PR_REVIEW_ZH.md`](review/PR_REVIEW_ZH.md)。原始 PDF v3 和 Problem Analysis v2 尚需作者同步交易计数及分析措辞；本节不改变原始截图或历史测试记录。
