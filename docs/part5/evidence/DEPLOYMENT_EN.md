@@ -9,7 +9,7 @@
 | Historical cloud record | CLOUD_VERIFICATION.json at 2026-10-12T06:50:02.616698+00:00 (14:50 SGT). |
 | Historical deployed commit | 85a86bae4af8bcc07601c8d0be582e87b3879862, as recorded by the team. |
 | Historical Render deployment | dep-db685lnlot8c7397utkg, as recorded by the team. |
-| Current exact backend revision | NOT VERIFIED. No Render console/deployment-log inspection was performed. |
+| Owner-reported post-fix revision | 9b9567e8d2913718bef9607ec6a7a586753c1f14; owner record and saved Render screenshot inspected by Part 5. Direct private Render/API attestation remains NOT VERIFIED. |
 | Current private Render/database settings | NOT VERIFIED. Source configuration and historical handover are not proof of current private values. |
 | New Render restart or deployment | None performed by Part 5 for this publication. |
 
@@ -51,4 +51,16 @@ The repository handover describes PostgreSQL shared with an individual assignmen
 
 The historical handover mentions maintenance at 2026-10-14 09:00 SGT and database expiry on 2026-11-06. These notices were not reverified in the provider console. Member 1 should confirm current notices and exact active deployment evidence before a demonstration. Do not treat the dates as freshly verified infrastructure facts.
 
-P5-001 remains OPEN. Publication GETs do not retest malformed pagination or close that finding. Member 1 owns the fix and deployment; Part 5 owns the targeted retest. Cloud free-tier behavior, RPC availability and data-store lifetime remain dependencies. A zero-event result can reflect the endpoint's latest-1,000-block window rather than lost transaction history.
+P5-001 remained OPEN after the 12 October publication GETs. The later independent retest now passes and closes it in Part 5; see the update below. Member 1 supplied the fix and deployment, and Part 5 performed the targeted retest. Cloud free-tier behavior, RPC availability and data-store lifetime remain dependencies. A zero-event result can reflect the endpoint's latest-1,000-block window rather than lost transaction history.
+
+## Post-fix deployment and independent retest
+
+The repository baseline is now `41e887576f32e1eec45505c9e39b9b719039f92f`. PR #2 is merged at `b82971ab048b83e62d466a672653231caffbb531`. Source fix `2f615e132d1d1eff95c787890798c0096fe55700` is included in the owner-reported deployed revision `9b9567e8d2913718bef9607ec6a7a586753c1f14`. The later baseline changes only documentation/evidence relative to that deployed revision; it is not assumed to be the running revision.
+
+Owner-provided Render deployment: `dep-db6fkad9fdbs7380b8e0`, service `srv-db5rv4ivcj2c7392k5r0`. Trigger time: 12 October 23:18:01 Singapore time. Owner-recorded actual service-live time: 23:19:16. Part 5 inspected [the record](https://github.com/GU-CHE/sc6113-escrow-dapp/blob/41e887576f32e1eec45505c9e39b9b719039f92f/docs/review/p5-001-deployment.json) and [the screenshot](https://github.com/GU-CHE/sc6113-escrow-dapp/blob/41e887576f32e1eec45505c9e39b9b719039f92f/docs/review/render-p5-001-deployment.png). The screenshot shows succeeded/live, source 9b9567e and the deployment ID; its Deployed field is trigger time, not the owner's separately recorded live-log time.
+
+[Deployed-revision CI](https://github.com/GU-CHE/sc6113-escrow-dapp/actions/runs/38269052633) and [baseline CI](https://github.com/GU-CHE/sc6113-escrow-dapp/actions/runs/38269762536) were verified successful through GitHub. [Retest provenance](retest-provenance-2026-10-13.json) records the metadata and attribution.
+
+The independent retest on 13 October at 00:19:50-00:20:47 Singapore time passed 14 GET checks; see [the closure record](RETEST_EN.md) and [raw observations](p5-001-retest-2026-10-12T16-19-50-547Z.json). The first health response took 42.679 seconds, with no independently established cause. Both prior content digests remain valid after the owner's deployment. This is a subsequent integrity read, not a new restart test. Part 5 performed no login, write, restart, deployment or blockchain transaction.
+
+P5-001 is RETEST PASS / CLOSED in Part 5. Private database settings and direct runtime-revision attestation remain unverified. The owner's screenshot also shows an October 14 maintenance notice, but Part 5 has not checked whether it is still current. Shared infrastructure and original evidence are unchanged.

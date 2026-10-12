@@ -31,7 +31,7 @@ def footer(canvas, doc):
     canvas.line(44, 40, A4[0]-44, 40)
     canvas.setFont('Helvetica', 8)
     canvas.setFillColor(colors.HexColor('#587080'))
-    canvas.drawString(44, 26, 'SC6113  /  PART 5  /  2026-10-12')
+    canvas.drawString(44, 26, 'SC6113  /  PART 5  /  UPDATED 2026-10-13')
     canvas.drawRightString(A4[0]-44, 26, str(doc.page))
 
 lines = (ROOT / 'acceptance' / 'BACKEND_ACCEPTANCE_EN.md').read_text(encoding='utf-8').splitlines()
@@ -44,10 +44,11 @@ while i < len(lines):
         continue
     if line.startswith('# '):
         story.extend([p('SC6113 GROUP PROJECT  |  PART 5', SMALL), p(line[2:], TITLE),
-                      p('30 checks  /  29 passed  /  1 open P2 defect', HEAD)])
+                      p('P5-001 closed  /  14 post-fix checks passed', HEAD),
+                      p('Historical run preserved: 30 checks / 29 passed / 1 failed', SMALL)])
     elif line.startswith('## '):
         title = line[3:]
-        if title in ['Acceptance coverage', 'Database persistence evidence', 'Defect P5-001']:
+        if title in ['Acceptance coverage', 'Database persistence evidence', 'Defect P5-001', 'Independent post-fix retest', 'Evidence index']:
             story.append(PageBreak())
         story.append(p(title, HEAD))
     elif line.startswith('|'):

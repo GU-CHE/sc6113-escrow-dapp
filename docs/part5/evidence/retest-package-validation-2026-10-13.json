@@ -1,0 +1,32 @@
+{
+  "validatedAtUTC": "2026-10-12T16:25:57.307031+00:00",
+  "scope": "Owned Part 5 follow-up package validation; not another application test run.",
+  "englishAuthoredContent": "PASS: English prose reviewed, filenames ASCII, no literal Chinese/Korean/replacement characters in Part 5 text or PDF. Original Unicode fixture escapes retained.",
+  "originalEvidenceFilesByteIdentical": 7,
+  "historicalManifestVerifiedAgainstCommit": "368d2385174e61aba4dbdd72b72dffe21689f252",
+  "historicalManifestEntriesVerified": 25,
+  "historicalManifestsAndValidationUnchanged": true,
+  "originalLiveSummary": {
+    "PASS": 29,
+    "FAIL": 1
+  },
+  "independentRetestSummary": {
+    "PASS": 14,
+    "FAIL": 0,
+    "NOT RUN": 0
+  },
+  "retestHelperHashMatchesExecution": true,
+  "localMarkdownLinksChecked": 34,
+  "jsonFilesParsedBeforeNewAuditFiles": 14,
+  "syntax": "PASS: four CJS helpers and Python report builder parsed.",
+  "sourceAPITestMethods": 9,
+  "secretPatternScan": "PASS for targeted private-key/token/credential-URL patterns; not a security certification.",
+  "pdf": {
+    "pages": 6,
+    "renderedPagesVisuallyInspected": 6,
+    "result": "PASS"
+  },
+  "diffScope": "All changes/additions under docs/part5; all other tracked files unchanged.",
+  "applicationLocalPythonSuite": "NOT RUN; owner-revision CI verified; prior policy block not bypassed.",
+  "closure": "P5-001 RETEST PASS / CLOSED in owned records; shared register integration remains with coordinator."
+}
