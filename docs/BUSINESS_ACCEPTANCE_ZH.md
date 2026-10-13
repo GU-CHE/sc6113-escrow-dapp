@@ -21,8 +21,8 @@
 | F5 | REST API、持久化存储、异常处理 | `app.py`；Render PostgreSQL | ✅ 服务重启后数据保留已验证 | 错误输入的响应记录 | 5 |
 | F6 | 响应式仪表盘、交易历史、事件日志、数据可视化 | `templates/index.html`：指标卡、状态分布条、Transaction history | ⚠️ 可视化只有一个状态分布图 | 真实手机检查；是否补充图表待讨论 | 4 |
 | F7 | Gas 估算 | `transact()` 签名前调用 `estimateGas` 并显示费用上限 | ✅ 签名前审核弹窗显示估算 gas 和费用上限（[截图](acceptance-screenshots/F7-createOrder-gas-estimate.webp)）；估算与实测对比见 6.4 | — | **2**、5 |
-| F8 | Gas 优化分析 | 只有本地测量 `docs/gas-samples.json` | ❌ | 优化方案及前后对比 | 3 / 5（未明确） |
-| F9 | 智能合约测试 | `tests/contracts.test.cjs` 11 项，GitHub Actions 通过 | ✅ | — | 3 |
+| F8 | Gas 优化分析 | `docs/part3/evidence/gas-optimization.json` 有 optimizer 关闭/200 runs 的可复现对照 | ✅ | 详细解释见 `docs/part3/CONTRACT_ACCEPTANCE_ZH.md` 第 7 节 | 3 |
+| F9 | 智能合约测试 | `tests/contracts.test.cjs` 14 项本地通过；新增 3 项等待分支推送后 CI | ✅ | 新增测试的 GitHub Actions 结果待生成 | 3 |
 | F10 | 公共云部署 | https://sc6113-escrow-dapp.onrender.com | ✅ 线上完整业务流程已跑通（第 6 节） | — | 1、5 |
 
 ### 1.2 真实问题分析（15 分，成员 2 负责问题分析章节）

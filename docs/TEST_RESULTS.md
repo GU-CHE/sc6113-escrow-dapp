@@ -1,5 +1,13 @@
 # Local verification results
 
+## Part 3 extension — 2026-10-13
+
+- Contract suite: **14 tests passed locally** on Windows / Node 24.12.0 / solc 0.8.30 / Ganache 7.9.2. Three added cases cover invalid and cross-system resolver bindings, nonzero dispute records plus dual-contract events, and multi-order liability reconciliation.
+- Optimizer experiment: optimizer 200 reduced the three deployment gas figures by 39.4%, 48.6% and 48.7%; representative runtime operations improved by 0.9%–6.1%. Raw evidence: `part3/evidence/gas-optimization.json`.
+- GitHub Actions for these three new tests is pending until the Part 3 branch is pushed. The historical CI claims below remain tied to their named commits and runs.
+
+## Original baseline — 2026-10-12
+
 Date: 2026-10-12. Host: macOS arm64; Solidity 0.8.30, optimizer 200, EVM Shanghai; Ganache 7.9.2; ethers 6.15.0; Python 3.9 local virtual environment. Deployment target uses Python 3.11.
 
 - Contract suite: **11 tests passed**, including role escalation, unauthorized calls, exact funding, cancellation, both dispute outcomes, deadline refund, rejecting receiver credit preservation, reentrancy and final liabilities.
