@@ -4,7 +4,7 @@ SC6113 group project prototype: a single-delivery freelance escrow DApp using th
 
 **Online preview:** https://sc6113-escrow-dapp.onrender.com
 
-**Status (2026-10-12):** the Flask interface is deployed on Render with PostgreSQL. GitHub Actions passes 11 contract tests and 7 API tests. Cloud login, metadata storage and persistence after a service restart passed. The three Sepolia contracts and resolver binding are deployed: all four receipts succeeded, creation bytecodes match this repository, and contract bindings and the fixed administrator were checked through RPC. Public addresses are saved in `deployment.json`; receipts are in [Sepolia verification](docs/SEPOLIA_VERIFICATION.json). Real MetaMask business lifecycle and real mobile acceptance remain pending. Use test ETH only. See [Chinese handover](docs/HANDOVER_ZH.md).
+**Status (2026-10-13):** the Flask interface is deployed on Render with PostgreSQL. The contract suite contains 14 locally passing tests; the last merged GitHub Actions baseline passed 11 contract and 9 API tests, so the three new contract cases still require CI after this branch is pushed. Cloud login, metadata storage and persistence after a service restart passed. The three Sepolia contracts and resolver binding are deployed: all four receipts succeeded, creation bytecodes match this repository, and contract bindings and the fixed administrator were checked through RPC. Public addresses are saved in `deployment.json`; receipts are in [Sepolia verification](docs/SEPOLIA_VERIFICATION.json). B00–B05 real MetaMask business acceptance passed; real mobile acceptance remains pending. Use test ETH only. See [Part 3 contract acceptance](docs/part3/README.md) and [Chinese handover](docs/HANDOVER_ZH.md).
 
 ## Quick start
 

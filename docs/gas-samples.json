@@ -98,8 +98,44 @@
       "gasUsed": "65072"
     },
     {
+      "operation": "createOrder",
+      "gasUsed": "154889"
+    },
+    {
+      "operation": "acceptOrder",
+      "gasUsed": "42802"
+    },
+    {
+      "operation": "fundOrder",
+      "gasUsed": "65072"
+    },
+    {
       "operation": "refundExpired",
       "gasUsed": "88237"
+    },
+    {
+      "operation": "createOrder",
+      "gasUsed": "154889"
+    },
+    {
+      "operation": "acceptOrder",
+      "gasUsed": "42802"
+    },
+    {
+      "operation": "fundOrder",
+      "gasUsed": "65072"
+    },
+    {
+      "operation": "createOrder",
+      "gasUsed": "154889"
+    },
+    {
+      "operation": "acceptOrder",
+      "gasUsed": "42802"
+    },
+    {
+      "operation": "fundOrder",
+      "gasUsed": "47972"
     }
   ]
 }

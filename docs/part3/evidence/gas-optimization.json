@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-10-13T05:59:02.418Z",
+  "environment": "Ganache chain 1337, Shanghai; deterministic local comparison, not a Sepolia fee quote",
+  "unoptimized": {
+    "label": "optimizer disabled",
+    "optimizer": {
+      "enabled": false,
+      "runs": 0
+    },
+    "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+    "runtimeBytes": {
+      "RoleRegistry": 1414,
+      "EscrowOrders": 13820,
+      "DisputeResolver": 4949
+    },
+    "gas": {
+      "deployRoleRegistry": "393622",
+      "deployEscrowOrders": "3031417",
+      "deployDisputeResolver": "1134362",
+      "setResolver": "53852",
+      "registerCustomer": "45865",
+      "registerProvider": "45928",
+      "createOrder": "174706",
+      "acceptOrder": "43995",
+      "fundOrder": "66321",
+      "submitDelivery": "64702",
+      "openDispute": "100154",
+      "addEvidence": "53159",
+      "resolveProvider": "127718",
+      "withdraw": "50390"
+    }
+  },
+  "optimized": {
+    "label": "optimizer enabled, 200 runs",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+    "runtimeBytes": {
+      "RoleRegistry": 724,
+      "EscrowOrders": 6949,
+      "DisputeResolver": 2408
+    },
+    "gas": {
+      "deployRoleRegistry": "238495",
+      "deployEscrowOrders": "1557343",
+      "deployDisputeResolver": "582350",
+      "setResolver": "52469",
+      "registerCustomer": "45469",
+      "registerProvider": "45506",
+      "createOrder": "171989",
+      "acceptOrder": "42802",
+      "fundOrder": "65072",
+      "submitDelivery": "63213",
+      "openDispute": "97717",
+      "addEvidence": "49914",
+      "resolveProvider": "124568",
+      "withdraw": "49872"
+    }
+  },
+  "optimizedGasPercentChangeVersusUnoptimized": {
+    "deployRoleRegistry": -39.4,
+    "deployEscrowOrders": -48.6,
+    "deployDisputeResolver": -48.7,
+    "setResolver": -2.6,
+    "registerCustomer": -0.9,
+    "registerProvider": -0.9,
+    "createOrder": -1.6,
+    "acceptOrder": -2.7,
+    "fundOrder": -1.9,
+    "submitDelivery": -2.3,
+    "openDispute": -2.4,
+    "addEvidence": -6.1,
+    "resolveProvider": -2.5,
+    "withdraw": -1
+  }
+}

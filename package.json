@@ -5,6 +5,7 @@
   "scripts": {
     "compile": "node scripts/compile.cjs",
     "test": "node --test tests/contracts.test.cjs",
+    "analyze:gas": "node scripts/gas-analysis.cjs",
     "chain": "node scripts/local-chain.cjs",
     "test:integration": "node tests/integration.cjs"
   },
