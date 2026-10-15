@@ -4,7 +4,7 @@ Status date: 2026-10-13 (Asia/Shanghai). This folder is the submission package f
 
 ## Deliverables
 
-- [CONTRACT_ACCEPTANCE_ZH.md](CONTRACT_ACCEPTANCE_ZH.md): complete Chinese acceptance report, permission matrix, fund invariants, test-to-requirement traceability and limitations.
+- [CONTRACT_ACCEPTANCE_EN.md](CONTRACT_ACCEPTANCE_EN.md): complete English acceptance report, permission matrix, fund invariants, test-to-requirement traceability and limitations.
 - [REPORT_SECTION_EN.md](REPORT_SECTION_EN.md): concise English section ready for the group technical report.
 - [CONTRIBUTION_EN.md](CONTRIBUTION_EN.md): individual contribution draft with an explicit verification checklist; the member must add their real name and attest only work they personally reviewed.
 - [evidence/gas-optimization.json](evidence/gas-optimization.json): reproducible optimizer-off versus optimizer-200 measurements.
