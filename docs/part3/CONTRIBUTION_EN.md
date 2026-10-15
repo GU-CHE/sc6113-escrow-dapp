@@ -16,7 +16,7 @@ The contract suite was extended from 11 to 14 tests with explicit checks for inv
 
 - `tests/contracts.test.cjs` — additional permission, interaction and accounting tests.
 - `scripts/gas-analysis.cjs` — reproducible optimizer comparison.
-- `docs/part3/CONTRACT_ACCEPTANCE_ZH.md` — detailed acceptance report.
+- `docs/part3/CONTRACT_ACCEPTANCE_EN.md` — detailed acceptance report.
 - `docs/part3/REPORT_SECTION_EN.md` — report-ready English section.
 - `docs/part3/evidence/gas-optimization.json` — generated measurement evidence.
 - `docs/part3/README.md` and this contribution record.
